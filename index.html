@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santiago & Sofía 🏁💛</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fff8ec;
+  --paper:#ffffff;
+  --sun:#ffc83d;
+  --sun-deep:#e9a400;
+  --sun-soft:#fff0c2;
+  --stitch:#3f6fd8;
+  --stitch-soft:#dfe8ff;
+  --race:#e8392b;
+  --ink:#16213e;
+  --muted:#6b6f80;
+  --line:#efe2c8;
+  --green:#14a05a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer}
+.hand{font-family:"Caveat",cursive}
+.serif{font-family:"Fraunces",serif}
+
+/* ===== Intro / semáforo ===== */
+#intro{
+  position:fixed;inset:0;z-index:100;background:var(--ink);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  padding:24px;text-align:center;transition:transform .9s cubic-bezier(.7,0,.2,1);
+}
+#intro::before,#intro::after{
+  content:"";position:absolute;left:0;right:0;height:28px;
+  background:repeating-conic-gradient(#fff 0 25%,#16213e 0 50%) 0 0/28px 28px;
+}
+#intro::before{top:0}#intro::after{bottom:0}
+#intro.gone{transform:translateY(-105%)}
+#intro h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(34px,7vw,64px);margin:0;line-height:1.05}
+#intro h1 em{color:var(--sun)}
+#intro p{margin:0;opacity:.75;max-width:360px;line-height:1.6}
+.lights{display:flex;gap:12px;padding:16px 18px;background:#0b1226;border-radius:16px}
+.light{width:clamp(34px,8vw,48px);aspect-ratio:1;border-radius:50%;background:#2a3150;transition:background .15s, box-shadow .15s}
+.light.on{background:var(--race);box-shadow:0 0 22px var(--race)}
+.light.go{background:var(--green);box-shadow:0 0 22px var(--green)}
+.btn{
+  border:0;border-radius:999px;padding:15px 28px;font-weight:800;font-size:16px;
+  background:var(--sun);color:var(--ink);box-shadow:0 6px 0 var(--sun-deep);transition:transform .1s, box-shadow .1s;
+}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--sun-deep)}
+.btn.blue{background:var(--stitch);color:#fff;box-shadow:0 6px 0 #2a4fa3}
+.skip{background:none;border:0;color:#fff;opacity:.5;text-decoration:underline;font-size:13px}
+
+/* ===== Pista de progreso ===== */
+#track{
+  position:fixed;top:0;left:0;right:0;height:14px;z-index:50;
+  background:repeating-linear-gradient(90deg,#ffffff 0 18px,#ffe08a 18px 36px);
+  border-bottom:2px solid var(--ink);
+}
+#track .finish{position:absolute;right:0;top:0;bottom:0;width:22px;background:repeating-conic-gradient(var(--ink) 0 25%,#fff 0 50%) 0 0/7px 7px}
+#car{position:absolute;top:-9px;font-size:24px;transform:scaleX(-1);transition:left .1s linear;left:0}
+
+/* ===== Hero ===== */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;
+  width:min(1120px,92%);margin:auto;padding:80px 0 60px;position:relative;
+}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.hero h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(52px,8.5vw,108px);line-height:.92;margin:22px 0 18px;letter-spacing:-2px}
+.hero h1 .amp{font-style:italic;color:var(--race)}
+.hero h1 .sof{color:var(--stitch);font-style:italic}
+.hero p.lead{font-size:clamp(17px,2vw,20px);line-height:1.7;color:var(--muted);max-width:480px;margin:0 0 28px}
+.date-chip{display:inline-flex;gap:10px;align-items:center;font-weight:800;font-size:18px;background:var(--sun);padding:12px 20px;border-radius:14px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.hero-photo{position:relative;justify-self:center}
+.polaroid{background:#fff;padding:12px 12px 52px;box-shadow:0 18px 50px rgba(22,33,62,.18);border-radius:4px;position:relative}
+.polaroid img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.polaroid .cap{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:"Caveat",cursive;font-size:24px;color:var(--ink)}
+.hero-photo .polaroid{width:min(360px,78vw);transform:rotate(3deg)}
+.tape{position:absolute;top:-14px;left:50%;width:110px;height:30px;transform:translateX(-50%) rotate(-4deg);background:rgba(255,200,61,.75)}
+.sticker{position:absolute;font-size:44px;animation:bob 3s ease-in-out infinite}
+.sticker.s1{top:-20px;left:-34px}
+.sticker.s2{bottom:30px;right:-36px;animation-delay:1s}
+.sticker.s3{top:40%;left:-48px;animation-delay:.5s}
+@keyframes bob{50%{transform:translateY(-10px) rotate(6deg)}}
+.scroll-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--muted);animation:bob 2s infinite}
+
+/* ===== Secciones ===== */
+section{width:min(1080px,92%);margin:auto;padding:90px 0}
+.label{color:var(--race);text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:800;text-align:center}
+h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(36px,5vw,56px);text-align:center;margin:10px 0 14px;line-height:1.05}
+h2 em{color:var(--stitch)}
+.sub{max-width:640px;margin:0 auto 44px;text-align:center;color:var(--muted);line-height:1.8;font-size:17px}
+
+/* Contadores */
+.counter{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.box{background:var(--paper);border:2px solid var(--ink);border-radius:18px;padding:22px 8px;text-align:center;box-shadow:4px 4px 0 var(--ink)}
+.box .n{display:block;font-size:clamp(28px,4vw,40px);font-weight:800;font-variant-numeric:tabular-nums;color:var(--stitch)}
+.box .l{display:block;margin-top:6px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.total{text-align:center;margin-top:22px;color:var(--muted)}
+.total b{color:var(--race)}
+
+.mystery{margin-top:30px;background:var(--ink);color:#fff;border-radius:28px;padding:50px 36px;position:relative;overflow:hidden}
+.mystery::after{content:"";position:absolute;right:0;top:0;bottom:0;width:36px;background:repeating-conic-gradient(#fff 0 25%,var(--ink) 0 50%) 0 0/18px 18px;opacity:.9}
+.mystery h2{color:#fff;margin-top:6px}
+.mystery h2 em{color:var(--sun)}
+.mystery .sub{color:#c7cbe0;margin-bottom:30px}
+.mystery .label{color:var(--sun)}
+.mystery .counter{grid-template-columns:repeat(4,1fr);max-width:700px;margin:auto;padding-right:20px}
+.mystery .box{background:#1f2c52;border-color:var(--sun);box-shadow:4px 4px 0 var(--sun)}
+.mystery .box .n{color:var(--sun)}
+.mystery .box .l{color:#c7cbe0}
+.fuel{max-width:520px;margin:30px auto 0;padding-right:20px}
+.fuel-top{display:flex;justify-content:space-between;font-size:13px;color:#c7cbe0;margin-bottom:8px}
+.fuel-bar{height:16px;border-radius:999px;background:#0b1226;overflow:hidden;border:1px solid #2f3b66}
+.fuel-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--race));border-radius:999px;transition:width 2.5s ease}
+.mystery-actions{text-align:center;margin-top:30px;padding-right:20px}
+#tease{min-height:28px;margin-top:18px;font-family:"Caveat",cursive;font-size:28px;color:var(--sun)}
+
+/* Timeline */
+.timeline{position:relative;display:grid;gap:60px}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:6px;transform:translateX(-50%);background:repeating-linear-gradient(180deg,var(--ink) 0 14px,transparent 14px 28px)}
+.lap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative}
+.lap::after{content:attr(data-icon);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--sun);border:3px solid var(--ink);display:grid;place-items:center;font-size:26px}
+.lap:nth-child(even) .lap-photo{order:2}
+.lap-photo .polaroid{max-width:330px;margin:auto;transform:rotate(-3deg);transition:transform .3s}
+.lap:nth-child(even) .lap-photo .polaroid{transform:rotate(3deg)}
+.lap-photo .polaroid:hover{transform:rotate(0) scale(1.03)}
+.lap-text .lapno{font-weight:800;color:var(--race);letter-spacing:2px;font-size:13px}
+.lap-text h3{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(28px,3.5vw,38px);margin:8px 0 12px;line-height:1.1}
+.lap-text p{line-height:1.85;color:#4a4f63;font-size:17px;margin:0}
+.lap-text .date{display:inline-block;margin-top:14px;background:var(--stitch-soft);color:var(--stitch);padding:6px 12px;border-radius:8px;font-weight:700;font-size:14px}
+.note{margin-top:16px;background:#fff;border-left:5px solid var(--race);padding:14px 18px;font-family:"Caveat",cursive;font-size:24px;line-height:1.3;border-radius:0 10px 10px 0}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s, transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* Llamada */
+.call-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.phone{width:min(300px,80vw);aspect-ratio:9/19;margin:auto;border-radius:44px;background:var(--ink);padding:12px;box-shadow:0 30px 60px rgba(22,33,62,.3);position:relative}
+.screen{width:100%;height:100%;border-radius:34px;overflow:hidden;position:relative;background:linear-gradient(180deg,#2a3b73,#16213e);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:56px 20px 40px;text-align:center}
+.screen .avatar{width:96px;height:96px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-size:50px;margin:0 auto 14px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,200,61,.6)}100%{box-shadow:0 0 0 28px rgba(255,200,61,0)}}
+.screen .who{font-size:26px;font-weight:700}
+.screen .what{opacity:.7;font-size:14px;margin-top:4px}
+.call-btns{display:flex;gap:46px}
+.cb{width:64px;height:64px;border-radius:50%;border:0;font-size:26px;color:#fff;transition:transform .25s}
+.cb.no{background:var(--race)}.cb.yes{background:var(--green);animation:pulse 1.6s infinite}
+.screen.answered{padding:0;justify-content:flex-start}
+.screen.answered img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.screen .timer{position:absolute;top:18px;left:0;right:0;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.6);z-index:2}
+.screen .hang{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2}
+#callMsg{min-height:30px}
+
+/* Clásico */
+.board{max-width:720px;margin:auto;background:var(--ink);border-radius:24px;padding:30px;color:#fff;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;text-align:center;box-shadow:6px 6px 0 var(--sun)}
+.team .crest{font-size:46px}
+.team .tname{font-weight:800;font-size:20px;margin-top:6px}
+.team .tsub{font-size:13px;opacity:.7}
+.team.v .tname{color:#3ddc84}.team.b .tname{color:#7aa7ff}
+.score{font-size:clamp(46px,8vw,72px);font-weight:800;font-variant-numeric:tabular-nums;display:flex;gap:14px;align-items:center}
+.score small{font-size:24px;opacity:.5}
+.goal-btns{display:flex;justify-content:center;gap:12px;margin-top:22px;flex-wrap:wrap}
+.goal-btns .btn{font-size:14px;padding:12px 20px}
+.btn.green{background:#14a05a;color:#fff;box-shadow:0 6px 0 #0c6b3c}
+#boardMsg{text-align:center;margin-top:18px;font-family:"Caveat",cursive;font-size:28px;min-height:36px}
+.futbol-photo{max-width:340px;margin:40px auto 0}
+.futbol-photo .polaroid{transform:rotate(-2deg)}
+
+/* Galería */
+.gallery{columns:3 260px;column-gap:22px}
+.gallery .polaroid{break-inside:avoid;margin-bottom:26px;cursor:zoom-in;transition:transform .3s}
+.gallery .polaroid:nth-child(3n+1){transform:rotate(-2deg)}
+.gallery .polaroid:nth-child(3n+2){transform:rotate(1.5deg)}
+.gallery .polaroid:hover{transform:rotate(0) scale(1.03);z-index:2}
+.gallery .polaroid img{aspect-ratio:auto}
+#lightbox{position:fixed;inset:0;background:rgba(10,15,30,.92);z-index:90;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:20px}
+#lightbox.open{display:flex}
+#lightbox img{max-height:78vh;max-width:92vw;border-radius:10px;border:6px solid #fff}
+#lightbox .lcap{color:#fff;font-family:"Caveat",cursive;font-size:30px;text-align:center}
+#lightbox .lnav{position:absolute;top:50%;transform:translateY(-50%);background:var(--sun);border:0;width:50px;height:50px;border-radius:50%;font-size:22px;font-weight:800}
+#lightbox .prev{left:16px}#lightbox .next{right:16px}
+#lightbox .close{position:absolute;top:16px;right:16px;background:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:20px}
+
+/* Frasco */
+.jar-wrap{text-align:center}
+.jar{font-size:110px;display:inline-block;cursor:pointer;user-select:none;transition:transform .2s;filter:drop-shadow(0 12px 18px rgba(0,0,0,.15))}
+.jar:hover{transform:rotate(-6deg) scale(1.05)}
+.jar.shake{animation:shake .5s}
+@keyframes shake{25%{transform:rotate(-12deg)}50%{transform:rotate(10deg)}75%{transform:rotate(-6deg)}}
+.reason{max-width:560px;margin:24px auto 0;min-height:120px;background:#fff;border:2px dashed var(--sun-deep);border-radius:18px;padding:24px;font-family:"Caveat",cursive;font-size:30px;line-height:1.3;display:flex;align-items:center;justify-content:center;transform:rotate(-1deg)}
+.count{margin-top:12px;font-size:13px;color:var(--muted)}
+
+/* Carta */
+.envelope{max-width:620px;margin:auto;position:relative;cursor:pointer}
+.env-closed{background:var(--sun);border:3px solid var(--ink);border-radius:18px;padding:60px 30px;text-align:center;box-shadow:6px 6px 0 var(--ink);position:relative;overflow:hidden;transition:transform .2s}
+.env-closed:hover{transform:translateY(-4px)}
+.env-closed::before{content:"";position:absolute;left:-10%;right:-10%;top:-60%;height:120%;background:#ffd76e;transform:rotate(0);border-bottom:3px solid var(--ink);clip-path:polygon(0 0,100% 0,50% 100%)}
+.env-closed > *{position:relative}
+.env-closed .seal{font-size:54px}
+.env-closed b{display:block;font-family:"Fraunces",serif;font-size:28px;font-weight:400;margin-top:10px}
+.letter{display:none;background:#fff;border-radius:18px;padding:44px 40px;box-shadow:0 20px 60px rgba(22,33,62,.15);background-image:repeating-linear-gradient(180deg,transparent 0 37px,#f1e6cf 37px 38px);font-family:"Caveat",cursive;font-size:27px;line-height:38px;color:#2b3150}
+.letter.open{display:block;animation:pop .6s}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+.letter .sign{text-align:right;margin-top:16px;color:var(--race)}
+
+footer{text-align:center;padding:50px 20px 70px;color:var(--muted);font-size:14px;border-top:2px dashed var(--line)}
+footer .big{font-family:"Fraunces",serif;font-size:30px;color:var(--ink);margin-bottom:6px}
+
+/* Flores al tocar */
+.pop-emoji{position:fixed;pointer-events:none;z-index:80;font-size:26px;animation:fly 1.4s ease-out forwards}
+@keyframes fly{to{transform:translate(var(--dx),-130px) rotate(var(--r)) scale(.6);opacity:0}}
+
+/* Responsive */
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:70px}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero-photo{margin-top:20px}
+  .counter{grid-template-columns:repeat(3,1fr)}
+  .timeline::before{left:22px}
+  .lap{grid-template-columns:1fr;gap:24px;padding-left:56px}
+  .lap::after{left:22px;top:0;transform:translate(-50%,0);width:44px;height:44px;font-size:20px}
+  .lap:nth-child(even) .lap-photo{order:0}
+  .call-wrap{grid-template-columns:1fr;text-align:center}
+  .board{grid-template-columns:1fr;gap:10px}
+  .mystery{padding:40px 18px 40px}
+  .mystery::after{display:none}
+  .mystery .counter,.fuel,.mystery-actions{padding-right:0}
+  .letter{padding:30px 22px;font-size:24px}
+  .sticker.s1{left:-6px}.sticker.s2{right:-6px}.sticker.s3{display:none}
+}
+@media(max-width:480px){
+  .counter{grid-template-columns:repeat(2,1fr)}
+  .mystery .counter{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Intro con semáforo -->
+<div id="intro">
+  <h1>Para <em>Sofía</em> 💛</h1>
+  <p>Una carrera que empezó el 04 · 09 · 2026 y que no tiene línea de meta.</p>
+  <div class="lights">
+    <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+  </div>
+  <button class="btn" id="startBtn">Encender motores 🏁</button>
+  <button class="skip" id="skipBtn">saltar intro</button>
+</div>
+
+<div id="track"><span id="car">🏎️</span><div class="finish"></div></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div>
+    <span class="kicker">🏁 Nuestra historia</span>
+    <h1>Santiago<br><span class="amp">&amp;</span> <span class="sof">Sofía</span></h1>
+    <p class="lead">Dos personas, un 4 de septiembre y una conversación que todavía no se termina. Bienvenida a nuestra pista. Toca la pantalla donde quieras 🌼</p>
+    <div class="date-chip">📅 04 · 09 · 2026</div>
+  </div>
+  <div class="hero-photo">
+    <span class="sticker s1">🌼</span><span class="sticker s2">🏎️</span><span class="sticker s3">💙</span>
+    <div class="polaroid"><div class="tape"></div><img src="espejo2.jpg" alt="Santiago y Sofía"><div class="cap">mi persona favorita</div></div>
+  </div>
+  <div class="scroll-hint">baja ↓</div>
+</header>
+
+<!-- CONTADOR -->
+<section id="contador">
+  <div class="label">Cronómetro oficial</div>
+  <h2>Llevamos <em>hablando</em></h2>
+  <p class="sub">Desde el 4 de septiembre de 2026 el cronómetro no ha parado. Cada segundo que ves aquí es un segundo en el que has estado en mi cabeza.</p>
+  <div class="counter">
+    <div class="box"><span class="n" id="mo">0</span><span class="l">Meses</span></div>
+    <div class="box"><span class="n" id="d">0</span><span class="l">Días</span></div>
+    <div class="box"><span class="n" id="h">0</span><span class="l">Horas</span></div>
+    <div class="box"><span class="n" id="mi">0</span><span class="l">Minutos</span></div>
+    <div class="box"><span class="n" id="s">0</span><span class="l">Segundos</span></div>
+    <div class="box"><span class="n" id="td">0</span><span class="l">Días en total</span></div>
+  </div>
+  <p class="total">Eso son <b id="th">0</b> horas · <b id="ts">0</b> segundos pensando en ti.</p>
+
+  <div class="mystery reveal">
+    <div class="label">Próxima carrera</div>
+    <h2>Para ser <em>algo</em>…</h2>
+    <p class="sub">Este cronómetro todavía no tiene fecha de salida. Esa la vamos a poner los dos 👀</p>
+    <div class="counter" id="mysteryCounter">
+      <div class="box"><span class="n">??</span><span class="l">Días</span></div>
+      <div class="box"><span class="n">??</span><span class="l">Horas</span></div>
+      <div class="box"><span class="n">??</span><span class="l">Minutos</span></div>
+      <div class="box"><span class="n">??</span><span class="l">Segundos</span></div>
+    </div>
+    <div class="fuel">
+      <div class="fuel-top"><span>⛽ Cargando algo bonito…</span><span id="fuelPct">0%</span></div>
+      <div class="fuel-bar"><span id="fuel"></span></div>
+    </div>
+    <div class="mystery-actions">
+      <button class="btn" id="teaseBtn">¿Y cuándo? 🤔</button>
+      <div id="tease"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="historia">
+  <div class="label">Vuelta a vuelta</div>
+  <h2>Así ha sido <em>nuestra carrera</em></h2>
+  <p class="sub">Cada vuelta tiene su recuerdo. Y apenas vamos arrancando.</p>
+
+  <div class="timeline">
+    <div class="lap reveal" data-icon="✨">
+      <div class="lap-photo"><div class="polaroid"><img src="paseo.jpg" alt="Santiago y Sofía"><div class="cap">el comienzo</div></div></div>
+      <div class="lap-text">
+        <div class="lapno">VUELTA 01</div>
+        <h3>El día que nos conocimos</h3>
+        <p>No sabía que ese día iba a ser importante. Solo sé que desde ahí empecé a esperar tus mensajes, a sonreírle al celular como bobo y a querer que el día tuviera más horas para hablar contigo.</p>
+        <span class="date">04 · 09 · 2026</span>
+      </div>
+    </div>
+
+    <div class="lap reveal" data-icon="💙">
+      <div class="lap-photo"><div class="polaroid"><img src="stitch.jpg" alt="El Stitch de Sofía"><div class="cap">tu guardaespaldas 💙</div></div></div>
+      <div class="lap-text">
+        <div class="lapno">VUELTA 02</div>
+        <h3>Primera cita en Centro Mayor</h3>
+        <p>Nervios, risas y ese momento en que te di tu Stitch. Lo escogí para que te cuidara las noches en que yo no puedo estar, y para que cada vez que lo abraces te acuerdes de que alguien por ahí está loco por ti.</p>
+        <span class="date">09 · 09 · 2026</span>
+      </div>
+    </div>
+
+    <div class="lap reveal" data-icon="🌻">
+      <div class="lap-photo"><div class="polaroid"><img src="flores.jpg" alt="Flores amarillas"><div class="cap">flores amarillas 🌼</div></div></div>
+      <div class="lap-text">
+        <div class="lapno">VUELTA 03</div>
+        <h3>Flores amarillas</h3>
+        <p>Te regalé flores amarillas porque son del color de cómo se pone todo cuando sonríes. Y son de las que no se marchitan, igualito a lo que siento por ti: no tiene fecha de vencimiento.</p>
+      </div>
+    </div>
+
+    <div class="lap reveal" data-icon="🏎️">
+      <div class="lap-photo"><div class="polaroid"><img src="hotwheels.jpg" alt="Regalo de Hot Wheels"><div class="cap">el día de los Hot Wheels 🏁</div></div></div>
+      <div class="lap-text">
+        <div class="lapno">VUELTA 04</div>
+        <h3>El día de los Hot Wheels</h3>
+        <p>Nadie se había tomado el tiempo de armar algo así pensando en mí. Cada carrito, cada foto y cada detalle de esa caja me dijo lo mucho que me conoces. Me escribiste que conmigo nunca iba a ser espectador… y desde que llegaste voy en primera fila de lo mejor que me ha pasado.</p>
+        <div class="note">"Conmigo siempre serás protagonista" — y tú eres la mía 💛</div>
+      </div>
+    </div>
+
+    <div class="lap reveal" data-icon="📞">
+      <div class="lap-photo"><div class="polaroid"><img src="llamada.jpg" alt="Videollamada"><div class="cap">mi osita 🐻</div></div></div>
+      <div class="lap-text">
+        <div class="lapno">VUELTA 05</div>
+        <h3>Llamadas casi todas las noches</h3>
+        <p>Mi parte favorita del día empieza cuando contestas. Hablar de todo y de nada, quedarnos callados sin que sea incómodo y despedirnos cinco veces antes de colgar. Hasta con filtro de osito sigues siendo lo más lindo que veo antes de dormir.</p>
+      </div>
+    </div>
+
+    <div class="lap reveal" data-icon="🌴">
+      <div class="lap-photo"><div class="polaroid"><img src="melgar.jpg" alt="Melgar"><div class="cap">Melgar ☀️</div></div></div>
+      <div class="lap-text">
+        <div class="lapno">VUELTA 06</div>
+        <h3>Nuestro viaje a Melgar</h3>
+        <p>Sol, piscina, calor y tu familia. Gracias por dejarme entrar a tu mundo y por hacerme sentir parte de él. De ese viaje me traje el bronceado, muchas risas y la certeza de que quiero muchos viajes más contigo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LLAMADA -->
+<section id="llamada">
+  <div class="call-wrap">
+    <div class="reveal">
+      <div class="label" style="text-align:left">Ring ring</div>
+      <h2 style="text-align:left">Tienes una <em>llamada</em></h2>
+      <p class="sub" style="text-align:left;margin-left:0">Como casi todas las noches. Contesta, que esta vez no es para preguntarte cómo te fue… bueno, también.</p>
+      <p id="callMsg" class="hand" style="font-size:30px;color:var(--race)"></p>
+    </div>
+    <div class="phone reveal">
+      <div class="screen" id="screen">
+        <div>
+          <div class="avatar">🏎️</div>
+          <div class="who">Santiago 💛</div>
+          <div class="what">videollamada entrante…</div>
+        </div>
+        <div class="call-btns">
+          <button class="cb no" id="declineBtn" aria-label="Rechazar">✕</button>
+          <button class="cb yes" id="answerBtn" aria-label="Contestar">📞</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLÁSICO -->
+<section id="clasico">
+  <div class="label">El clásico</div>
+  <h2>Verdolaga vs. <em>Embajadora</em></h2>
+  <p class="sub">En la cancha somos rivales, pero en esto vamos para el mismo lado. Marca goles a ver qué pasa ⚽</p>
+  <div class="board reveal">
+    <div class="team v"><div class="crest">💚</div><div class="tname">Santiago</div><div class="tsub">Atlético Nacional</div></div>
+    <div class="score"><span id="gS">0</span><small>–</small><span id="gF">0</span></div>
+    <div class="team b"><div class="crest">💙</div><div class="tname">Sofía</div><div class="tsub">Millonarios</div></div>
+  </div>
+  <div class="goal-btns">
+    <button class="btn green" id="goalS">⚽ Gol de Santiago</button>
+    <button class="btn blue" id="goalF">⚽ Gol de Sofía</button>
+  </div>
+  <div id="boardMsg"></div>
+  <div class="futbol-photo reveal"><div class="polaroid"><img src="futbol.jpg" alt="Santiago y Sofía con sus camisetas"><div class="cap">el único clásico en el que ganamos los dos</div></div></div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="label">Álbum</div>
+  <h2>Nosotros, <em>en fotos</em></h2>
+  <p class="sub">Toca cualquier foto para verla en grande.</p>
+  <div class="gallery" id="gallery">
+    <div class="polaroid reveal" data-cap="nuestro reflejo favorito 🪞"><img src="espejo2.jpg" alt=""><div class="cap">nuestro reflejo favorito</div></div>
+    <div class="polaroid reveal" data-cap="abrazos que arreglan el día 🤍"><img src="abrazo.jpg" alt=""><div class="cap">abrazos que arreglan todo</div></div>
+    <div class="polaroid reveal" data-cap="Melgar con la mejor compañía ☀️"><img src="melgar.jpg" alt=""><div class="cap">Melgar ☀️</div></div>
+    <div class="polaroid reveal" data-cap="no me sueltes nunca 💛"><img src="espejo1.jpg" alt=""><div class="cap">no me sueltes</div></div>
+    <div class="polaroid reveal" data-cap="tus besitos en la frente 😚"><img src="paseo.jpg" alt=""><div class="cap">mi lugar seguro</div></div>
+    <div class="polaroid reveal" data-cap="rivales en la cancha, equipo en la vida ⚽"><img src="futbol.jpg" alt=""><div class="cap">💚 vs 💙</div></div>
+    <div class="polaroid reveal" data-cap="el regalo más bonito que me han dado 🏁"><img src="hotwheels.jpg" alt=""><div class="cap">protagonista 🏁</div></div>
+    <div class="polaroid reveal" data-cap="flores amarillas que no se marchitan 🌼"><img src="flores.jpg" alt=""><div class="cap">para ti 🌼</div></div>
+    <div class="polaroid reveal" data-cap="tu Stitch, desde el 09 · 09 💙"><img src="stitch.jpg" alt=""><div class="cap">09 · 09 💙</div></div>
+  </div>
+</section>
+
+<!-- FRASCO -->
+<section id="frasco" class="jar-wrap">
+  <div class="label">Frasco de razones</div>
+  <h2>¿Por qué <em>tú</em>?</h2>
+  <p class="sub">Sacude el frasco. Cada vez que lo toques sale una razón distinta.</p>
+  <div class="jar" id="jar" role="button" aria-label="Sacar una razón">🫙</div>
+  <div class="reason" id="reason">toca el frasco 👆</div>
+  <div class="count" id="reasonCount"></div>
+</section>
+
+<!-- CARTA -->
+<section id="carta">
+  <div class="label">Una última cosa</div>
+  <h2>Te dejé una <em>carta</em></h2>
+  <p class="sub">Ábrela cuando quieras. Bueno… ábrela ya.</p>
+  <div class="envelope reveal" id="envelope">
+    <div class="env-closed" id="envClosed">
+      <div class="seal">💌</div>
+      <b>Para Sofía</b>
+      <div class="hand" style="font-size:22px;margin-top:8px">toca para abrir</div>
+    </div>
+    <div class="letter" id="letter">
+      Sofía:<br><br>
+      No sé muy bien cómo pasó, pero desde el 4 de septiembre todo se siente distinto. Mejor. Más bonito.<br><br>
+      Me encanta que me escribas, que me llames en las noches, que me hagas reír hasta con filtros de osito, y que te tomes el tiempo de pensar en detalles tan lindos como el de los Hot Wheels. Me encanta que me hayas dejado conocer a tu familia y que en Melgar me hayas hecho sentir en casa.<br><br>
+      Hiciste esta página posible solo con ser tú. Y no te preocupes: ese contador de "??" ya tiene piloto, solo falta la bandera de salida 🏁<br><br>
+      Gracias por llegar a mi vida. Contigo nunca voy a ser espectador.
+      <div class="sign">— Santiago 💛</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="big">Santiago &amp; Sofía</div>
+  Desde el 04 · 09 · 2026 · hecho con 💛 y muchas ganas de verte
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button class="close" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="lnav prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <img id="lbImg" alt="">
+  <div class="lcap" id="lbCap"></div>
+  <button class="lnav next" id="lbNext" aria-label="Siguiente">›</button>
+</div>
+
+<script>
+/* ========= CONFIGURACIÓN ========= */
+// 4 de septiembre de 2026, 00:00 (mes 8 = septiembre porque enero es 0)
+const START = new Date(2026, 8, 4, 0, 0, 0);
+
+const $ = id => document.getElementById(id);
+const fmt = n => n.toLocaleString("es-CO");
+
+/* ========= INTRO SEMÁFORO ========= */
+const lights = document.querySelectorAll(".light");
+function closeIntro(){ $("intro").classList.add("gone"); burst(innerWidth/2, innerHeight/2, 18); }
+$("startBtn").onclick = () => {
+  $("startBtn").disabled = true;
+  lights.forEach((l,i) => setTimeout(() => l.classList.add("on"), 400*(i+1)));
+  setTimeout(() => lights.forEach(l => { l.classList.remove("on"); l.classList.add("go"); }), 400*6 + 300);
+  setTimeout(() => { $("startBtn").textContent = "¡Arranca! 💨"; }, 400*6 + 300);
+  setTimeout(closeIntro, 400*6 + 1100);
+};
+$("skipBtn").onclick = closeIntro;
+
+/* ========= PISTA DE PROGRESO ========= */
+function updateCar(){
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const p = max > 0 ? scrollY / max : 0;
+  $("car").style.left = `calc(${p*100}% - ${p*48}px)`;
+}
+addEventListener("scroll", updateCar, {passive:true});
+
+/* ========= CONTADOR ========= */
+function tick(){
+  const now = new Date();
+  const diff = Math.max(0, now - START);
+  const totS = Math.floor(diff/1000), totH = Math.floor(totS/3600), totD = Math.floor(totH/24);
+  let cur = new Date(START), months = 0;
+  while(true){ const n = new Date(cur); n.setMonth(n.getMonth()+1); if(n <= now){ cur = n; months++; } else break; }
+  const r = now - cur;
+  $("mo").textContent = fmt(months);
+  $("d").textContent = fmt(Math.floor(r/864e5));
+  $("h").textContent = fmt(Math.floor(r%864e5/36e5));
+  $("mi").textContent = fmt(Math.floor(r%36e5/6e4));
+  $("s").textContent = fmt(Math.floor(r%6e4/1e3));
+  $("td").textContent = fmt(totD);
+  $("th").textContent = fmt(totH);
+  $("ts").textContent = fmt(totS);
+}
+tick(); setInterval(tick, 1000);
+
+/* ========= CONTADOR ?? ========= */
+const mysteryNums = document.querySelectorAll("#mysteryCounter .n");
+let scrambling = false;
+function scramble(){
+  if(scrambling) return; scrambling = true;
+  let t = 0;
+  const iv = setInterval(() => {
+    mysteryNums.forEach(n => n.textContent = String(Math.floor(Math.random()*99)).padStart(2,"0"));
+    if(++t > 14){ clearInterval(iv); mysteryNums.forEach(n => n.textContent = "??"); scrambling = false; }
+  }, 70);
+}
+setInterval(scramble, 4000);
+const teases = [
+  "Todavía no… pero ya casi 👀",
+  "Eso depende de una pregunta 🤭",
+  "El piloto está calentando motores 🏁",
+  "Spoiler: va a ser pronto",
+  "Cuando menos lo esperes 💛",
+  "Sigue cargando… ⛽",
+  "Pista: la respuesta empieza por \"s\" y termina por \"í\" 😏"
+];
+let ti = 0;
+$("teaseBtn").onclick = e => { scramble(); $("tease").textContent = teases[ti++ % teases.length]; };
+
+/* ========= REVEAL AL HACER SCROLL ========= */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){
+    e.target.classList.add("in");
+    if(e.target.classList.contains("mystery")) fillFuel();
+    io.unobserve(e.target);
+  }
+}), {threshold:.15});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+function fillFuel(){
+  $("fuel").style.width = "99%";
+  let p = 0; const iv = setInterval(() => { p++; $("fuelPct").textContent = p + "%"; if(p >= 99) clearInterval(iv); }, 25);
+}
+
+/* ========= FLORES AL TOCAR ========= */
+const EMO = ["🌼","💛","🌻","💙","✨","🏁"];
+function burst(x, y, n=6){
+  for(let i=0;i<n;i++){
+    const s = document.createElement("span");
+    s.className = "pop-emoji";
+    s.textContent = EMO[Math.floor(Math.random()*EMO.length)];
+    s.style.left = (x-13)+"px"; s.style.top = (y-13)+"px";
+    s.style.setProperty("--dx", (Math.random()*160-80)+"px");
+    s.style.setProperty("--r", (Math.random()*120-60)+"deg");
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1400);
+  }
+}
+document.addEventListener("click", e => { if(!e.target.closest("button,#lightbox,.polaroid")) burst(e.clientX, e.clientY); });
+
+/* ========= LLAMADA ========= */
+const declineMsgs = ["Eso no se puede rechazar 😤","Intenta otra vez 😌","El botón rojo está de adorno 🙃","Contesta, que es importante 💛"];
+let di = 0;
+$("declineBtn").onclick = () => {
+  const b = $("declineBtn");
+  b.style.transform = `translate(${Math.random()*40-20}px, ${-Math.random()*60-20}px)`;
+  $("callMsg").textContent = declineMsgs[di++ % declineMsgs.length];
+};
+$("answerBtn").onclick = () => {
+  const sc = $("screen");
+  sc.classList.add("answered");
+  sc.innerHTML = '<img src="llamada.jpg" alt="Videollamada"><div class="timer" id="callTimer">00:00</div><button class="cb no hang" id="hangBtn" aria-label="Colgar">✕</button>';
+  $("callMsg").textContent = "Hola, mi osita 🐻 ¿cómo te fue hoy? Te extrañé.";
+  let sec = 0;
+  const iv = setInterval(() => { sec++; const t = $("callTimer"); if(!t) return clearInterval(iv); t.textContent = String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0"); }, 1000);
+  const r = sc.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, 12);
+  $("hangBtn").onclick = () => { $("callMsg").textContent = "Cuelga tú… no, cuelga tú… 🙈 (no se puede colgar)"; };
+};
+
+/* ========= CLÁSICO ========= */
+let gs = 0, gf = 0;
+function board(){
+  $("gS").textContent = gs; $("gF").textContent = gf;
+  let m;
+  if(gs === gf) m = "Empate… como siempre que estamos juntos, ganamos los dos 🤝";
+  else if(gs > gf) m = gs - gf > 2 ? "Bueno ya, tampoco la humillemos 😅💚" : "Va ganando el verde… pero ella me robó el corazón igual 💚";
+  else m = gf - gs > 2 ? "Ok, ok, la embajadora manda aquí 👑💙" : "Va ganando el azul… y yo feliz perdiendo 💙";
+  $("boardMsg").textContent = m;
+}
+$("goalS").onclick = e => { gs++; board(); burst(e.clientX, e.clientY, 8); };
+$("goalF").onclick = e => { gf++; board(); burst(e.clientX, e.clientY, 8); };
+
+/* ========= GALERÍA ========= */
+const items = [...document.querySelectorAll("#gallery .polaroid")];
+let li = 0;
+function showLb(i){ li = (i + items.length) % items.length; $("lbImg").src = items[li].querySelector("img").src; $("lbCap").textContent = items[li].dataset.cap; $("lightbox").classList.add("open"); }
+items.forEach((it,i) => it.onclick = () => showLb(i));
+$("lbClose").onclick = () => $("lightbox").classList.remove("open");
+$("lbPrev").onclick = () => showLb(li-1);
+$("lbNext").onclick = () => showLb(li+1);
+$("lightbox").onclick = e => { if(e.target.id === "lightbox") $("lightbox").classList.remove("open"); };
+addEventListener("keydown", e => {
+  if(!$("lightbox").classList.contains("open")) return;
+  if(e.key === "Escape") $("lightbox").classList.remove("open");
+  if(e.key === "ArrowLeft") showLb(li-1);
+  if(e.key === "ArrowRight") showLb(li+1);
+});
+
+/* ========= FRASCO DE RAZONES ========= */
+const reasons = [
+  "Porque tu risa me arregla cualquier día malo.",
+  "Porque me escribiste que conmigo nunca sería espectador, y lo cumples.",
+  "Porque hasta con filtro de osito te ves preciosa 🐻",
+  "Porque las llamadas contigo se me pasan volando.",
+  "Porque te tomas el tiempo de pensar en detalles como los Hot Wheels.",
+  "Porque me dejaste conocer a tu familia.",
+  "Porque aunque seas de Millonarios, te quiero igual 💙",
+  "Porque tus abrazos por la espalda son mi lugar favorito.",
+  "Porque contigo hasta el silencio es cómodo.",
+  "Porque sonríes y todo se vuelve amarillo, como tus flores 🌼",
+  "Porque desde el 04 · 09 · 2026 todo es mejor.",
+  "Porque eres la protagonista de todas mis historias.",
+  "Porque me haces querer ser mejor cada día.",
+  "Porque sí. Y porque eres tú."
+];
+let pool = [];
+let seen = 0;
+$("jar").onclick = e => {
+  const j = $("jar"); j.classList.remove("shake"); void j.offsetWidth; j.classList.add("shake");
+  if(!pool.length) pool = [...reasons].sort(() => Math.random() - .5);
+  $("reason").textContent = pool.pop();
+  seen++;
+  $("reasonCount").textContent = seen < reasons.length ? `razón #${seen} · quedan muchas más` : `ya las viste todas… mentira, son infinitas 💛`;
+  burst(e.clientX, e.clientY, 5);
+};
+
+/* ========= CARTA ========= */
+$("envClosed").onclick = e => {
+  $("envClosed").style.display = "none";
+  $("letter").classList.add("open");
+  burst(e.clientX, e.clientY, 20);
+};
+</script>
+</body>
+</html>

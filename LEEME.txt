@@ -1,0 +1,15 @@
+SANTIAGO & SOFÍA — PÁGINA
+
+Probar: abre index.html con doble clic (se ve en computador Y en celular).
+
+Publicar en GitHub Pages:
+1. Crea un repositorio nuevo (ej: santiago-sofia) y sube TODOS los archivos de esta carpeta.
+2. Settings > Pages > Branch: main / root > Save.
+3. En 1-2 minutos tendrás el link: https://TU-USUARIO.github.io/santiago-sofia/
+
+Cambios rápidos (en index.html):
+- Fecha del contador: busca  const START = new Date(2026, 8, 4 ...   (el mes va de 0 a 11: septiembre = 8)
+- Frases del frasco: busca  const reasons = [
+- Frases del botón "¿Y cuándo?": busca  const teases = [
+- Carta: busca  id="letter"
+- Cambiar una foto: reemplaza el .jpg con otro del mismo nombre.
