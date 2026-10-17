@@ -323,7 +323,7 @@ h2 em{color:var(--stitch)}
 .stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3s infinite}
 @keyframes tw{50%{opacity:.15}}
-.vault{position:relative;max-width:420px;margin:0 auto;border:0;width:100%;background:linear-gradient(160deg,#25335e,#121a33);border-radius:26px;padding:34px 20px 28px;color:#fff;box-shadow:0 0 0 2px #2f3b66 inset,0 20px 50px rgba(0,0,0,.35);text-align:center}
+.vault{display:block;position:relative;max-width:420px;margin:0 auto;border:0;width:100%;background:linear-gradient(160deg,#25335e,#121a33);border-radius:26px;padding:34px 20px 28px;color:#fff;box-shadow:0 0 0 2px #2f3b66 inset,0 20px 50px rgba(0,0,0,.35);text-align:center}
 .vault.shake{animation:shake .5s}
 .vault .big-lock{font-size:80px;display:block;filter:drop-shadow(0 0 22px rgba(255,200,61,.45));animation:float 3s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-8px)}}
@@ -858,6 +858,8 @@ const START = new Date(2026, 8, 4, 0, 0, 0); // 4 de septiembre 2026 (septiembre
 const $ = id => document.getElementById(id);
 const fmt = n => n.toLocaleString("es-CO");
 const rand = (a, b) => a + Math.random() * (b - a);
+// mueve una barra horizontal SIN mover la página (scrollIntoView en iPhone movía todo)
+function centerIn(bar, el){ bar.scrollTo({left: el.offsetLeft - (bar.clientWidth - el.offsetWidth) / 2, behavior:"smooth"}); }
 
 /* ================= VIBRACIÓN (iPhone iOS 18+ / Android) ================= */
 const hapInput = document.querySelector("#hap input");
@@ -956,7 +958,7 @@ function showTab(name, anchor){
     const on = t.dataset.tab === name;
     t.classList.toggle("active", on);
     t.setAttribute("aria-selected", on);
-    if(on) t.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"});
+    if(on) centerIn(t.parentElement, t);
   });
   history.replaceState(null, "", "#" + name);
   if(name === "viene") startViene();
@@ -1149,7 +1151,7 @@ const chips = document.querySelectorAll(".chip");
 chips.forEach(c => c.addEventListener("click", () => $(c.dataset.ch).scrollIntoView({behavior:"smooth", block:"start"})));
 const chIo = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){
-    chips.forEach(c => { const on = c.dataset.ch === e.target.id; c.classList.toggle("on", on); if(on) c.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"}); });
+    chips.forEach(c => { const on = c.dataset.ch === e.target.id; c.classList.toggle("on", on); if(on) centerIn(c.parentElement, c); });
   }
 }), {rootMargin:"-45% 0px -50% 0px"});
 document.querySelectorAll(".chapter[id^=ch]").forEach(c => chIo.observe(c));
