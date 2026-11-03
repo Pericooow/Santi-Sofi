@@ -101,6 +101,7 @@ button,.tap{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none
 .navbtn.menu{border-color:rgba(255,255,255,.35)}
 .navbtn.menu .bars{display:inline-grid;gap:3px}
 .navbtn.menu .bars i{display:block;width:16px;height:2px;background:#fff;border-radius:2px}
+.tab .short{display:none}
 .tab.active{background:var(--sun);color:var(--ink);box-shadow:0 3px 0 var(--sun-deep)}
 .tab .dot{width:7px;height:7px;border-radius:50%;background:var(--race);box-shadow:0 0 0 0 rgba(232,57,43,.7);animation:ping 1.6s infinite}
 @keyframes ping{to{box-shadow:0 0 0 8px rgba(232,57,43,0)}}
@@ -114,9 +115,9 @@ button,.tap{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none
 .drawer{
   position:fixed;top:0;bottom:0;left:0;width:min(86vw,360px);z-index:100;background:#fff;
   transform:translateX(-102%);transition:transform .35s cubic-bezier(.3,.8,.2,1);
-  display:flex;flex-direction:column;overscroll-behavior:contain;box-shadow:10px 0 40px rgba(0,0,0,.25);
+  display:flex;flex-direction:column;overscroll-behavior:contain;
 }
-.drawer.open{transform:none}
+.drawer.open{transform:none;box-shadow:10px 0 40px rgba(0,0,0,.25)}
 .drawer-head{background:var(--ink);color:#fff;padding:calc(20px + var(--sat)) 20px 18px calc(20px + var(--sal));display:flex;align-items:center;gap:12px}
 .drawer-head img{width:46px;height:46px;border-radius:50%;border:2px solid var(--sun)}
 .drawer-head b{font-size:20px;display:block}
@@ -400,11 +401,22 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 .ready-btn{position:relative;border:0;border-radius:999px;padding:20px 34px;font-size:20px;font-weight:800;color:var(--ink);background:linear-gradient(135deg,#ffe08a,var(--sun) 50%,#ff9a3c);box-shadow:0 8px 0 var(--sun-deep),0 0 40px rgba(255,200,61,.35);transition:transform .12s,box-shadow .12s;animation:glow 2.2s ease-in-out infinite}
 .ready-btn:active{transform:translateY(5px);box-shadow:0 3px 0 var(--sun-deep)}
 @keyframes glow{50%{box-shadow:0 8px 0 var(--sun-deep),0 0 70px rgba(255,200,61,.65)}}
-#truth{position:fixed;inset:0;z-index:180;background:radial-gradient(120% 80% at 50% 0%,#2a3b73 0%,#0b1226 70%);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(30px + var(--sat)) 22px calc(30px + var(--sab));overscroll-behavior:contain;touch-action:manipulation}
+#truth{position:fixed;inset:0;z-index:180;background:radial-gradient(120% 80% at 50% 0%,#2a3b73 0%,#0b1226 70%);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:calc(64px + var(--sat)) 22px calc(30px + var(--sab));overscroll-behavior:contain;touch-action:manipulation;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #truth.open{display:flex;animation:fadeIn .35s ease}
 @keyframes fadeIn{from{opacity:0}}
 #truth .close-x{position:absolute;top:calc(14px + var(--sat));right:16px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:18px;font-weight:800}
-.step{display:none;flex-direction:column;align-items:center;max-width:420px;width:100%}
+.step{display:none;flex-direction:column;align-items:center;max-width:420px;width:100%;margin:auto 0}
+.soon-list{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:10px;width:100%;text-align:left}
+.soon-list li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:13px 16px;font-size:16px;line-height:1.45;display:flex;gap:12px;align-items:center}
+.soon-list li span{font-size:22px}
+.gd-label{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:800;color:#9fb4ff;margin:6px 0 10px}
+.gd-count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;margin-bottom:14px}
+.gd-count div{background:rgba(255,255,255,.08);border:1.5px solid rgba(159,180,255,.45);border-radius:14px;padding:12px 2px}
+.gd-count b{display:block;font-size:28px;font-variant-numeric:tabular-nums}
+.gd-count small{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;opacity:.75;font-weight:700}
+.gd-day{display:inline-block;background:#fff;color:var(--ink);font-weight:800;padding:9px 16px;border-radius:12px;margin-bottom:18px;letter-spacing:1px}
+.gd-arrived{font-family:"Fraunces",serif;font-size:30px;margin:4px 0 14px}
+.checking{opacity:.6}
 .step.on{display:flex;animation:stepIn .5s cubic-bezier(.2,.8,.2,1)}
 @keyframes stepIn{from{opacity:0;transform:translateY(24px) scale(.97)}}
 .step .emo{font-size:76px;animation:float 3s ease-in-out infinite}
@@ -452,6 +464,12 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
   .gallery .polaroid:hover{transform:scale(1.03)}
   .navbtn:not(.active):hover{border-color:rgba(255,255,255,.35)}
 }
+@media(max-width:460px){
+  .navrow{gap:5px;padding:0 8px}
+  .navbtn{font-size:14px;padding:8px 10px;gap:6px}
+  .navbtn.menu .mlabel,.tab .long{display:none}
+  .tab .short{display:inline}
+}
 @media(max-width:350px){.counter{grid-template-columns:repeat(2,1fr)}.viene .counter{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:400px){.viene .counter{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -474,9 +492,9 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 <!-- ============ NAV (estilo Amazon) ============ -->
 <header class="topbar">
   <nav class="navrow" role="tablist">
-    <button class="navbtn menu" id="menuBtn" aria-label="Abrir menú"><span class="bars"><i></i><i></i><i></i></span>Todo</button>
+    <button class="navbtn menu" id="menuBtn" aria-label="Abrir menú"><span class="bars"><i></i><i></i><i></i></span><span class="mlabel">Todo</span></button>
     <button class="navbtn tab active" role="tab" data-tab="inicio">🏁 Inicio</button>
-    <button class="navbtn tab" role="tab" data-tab="historia">📖 Nuestra historia</button>
+    <button class="navbtn tab" role="tab" data-tab="historia">📖 <span class="long">Nuestra historia</span><span class="short">Historia</span></button>
     <button class="navbtn tab" role="tab" data-tab="viene"><span class="dot"></span>Lo que viene</button>
   </nav>
   <div id="track"><span id="car">🏎️</span><div class="finish"></div></div>
@@ -638,7 +656,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <div class="tot">
         <div class="label">Toca la calabaza</div>
         <h2 style="font-size:clamp(30px,8vw,44px)">¿Truco o <em>trato</em>?</h2>
-        <button class="pumpkin" id="pumpkin" data-burst="halloween" data-n="14" aria-label="Tricky Tricky...">🎃</button>
+        <button class="pumpkin" id="pumpkin" data-burst="halloween" data-n="14" aria-label="Truco o trato">🎃</button>
         <div class="tot-card" id="totCard"><span>toca la calabaza 👆</span></div>
       </div>
     </section>
@@ -742,8 +760,8 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     <p class="sub" style="margin-bottom:0">La misma noche, contada por los dos.</p>
     <div class="seg" id="seg">
       <span class="thumb"></span>
-      <button class="on" data-ver="sofia" id="v-sofia">💙 Versión de Sofía</button>
-      <button data-ver="santiago" id="v-santiago">💚 Versión de Santiago</button>
+      <button class="on" data-ver="sofia" id="v-sofia">💙 La de Sofía</button>
+      <button data-ver="santiago" id="v-santiago">💚 La de Santiago</button>
     </div>
   </div>
 
@@ -777,7 +795,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       </article>
 
       <article class="chapter reveal" id="ch2">
-        <div class="ch-head"><div class="ch-icon">📞</div><div><div class="ch-num">CAPÍTULO 2</div><div class="ch-title">La llamada hasta las 4 a. m.</div></div></div>
+        <div class="ch-head"><div class="ch-icon">📞</div><div><div class="ch-num">CAPÍTULO 2</div><div class="ch-title">La llamada hasta las 4&nbsp;a.&nbsp;m.</div></div></div>
         <p>Y sí, me escribiste, y fue así como empezamos a hablar. Me acuerdo muy bien de que el sábado hablamos todo el día y, cuando llegó la noche, te pregunté si querías hacer una llamada mientras tú hacías trabajos. Tú me dijiste que sí y, pues, teníamos una conexión tan increíble que la llamada duró hasta las cuatro de la mañana.</p>
         <p>Nos contamos todo, hablamos de tantas cosas y, sin darnos cuenta, empezó esta historia tan linda.</p>
         <p>Desde ahí, las llamadas se fueron convirtiendo en algo muy nuestro. Es bonito terminar el día hablando contigo, contándonos nuestras cosas y compartiendo un pedacito de nuestro tiempo, incluso cuando cada uno está en su mundo.</p>
@@ -858,24 +876,102 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 
       <button class="teaser next-chapter" data-go="viene" data-burst="lock">
         <span class="t-lock">🔒</span>
-        <span><b>Capítulo 10</b><small>Todavía no se puede leer… 👀</small></span>
+        <span><b>Capítulo 10</b><small>Todavía no se puede leer… 🤫</small></span>
         <span class="t-arrow">›</span>
       </button>
     </div>
   </div>
 
-  <!-- ===== VERSIÓN DE SANTIAGO =====
-       Para agregarla: escribe tus párrafos dentro de <div id="textoSantiago">, cada uno en su <p>…</p>.
-       Mientras esté vacío se muestra "Santiago está escribiendo…" -->
+  <!-- ===== VERSIÓN DE SANTIAGO ===== -->
   <div id="ver-santiago" hidden>
+    <div class="chips" id="chips2">
+      <button class="chip" data-ch="s1">🚇 El plan</button>
+      <button class="chip" data-ch="s2">👀 Veeeh</button>
+      <button class="chip" data-ch="s3">💧 El agua</button>
+      <button class="chip" data-ch="s4">🎶 Bailando</button>
+      <button class="chip" data-ch="s5">🚗 El carro</button>
+      <button class="chip" data-ch="s6">💻 Los talleres</button>
+      <button class="chip" data-ch="s7">🙈 Tierra trágame</button>
+      <button class="chip" data-ch="s8">🌙 Lo demás</button>
+    </div>
     <div class="version">
-      <div id="textoSantiago"></div>
-      <div class="typing-card" id="typingCard">
-        <div style="font-size:44px">✍️</div>
-        <div class="bubble"><i></i><i></i><i></i></div>
-        <h3 style="font-family:Fraunces,serif;font-weight:400;font-size:26px;margin:4px 0 8px">Santiago está escribiendo…</h3>
-        <p style="color:var(--muted);line-height:1.7;margin:0">Mi versión viene en camino. Dame un ratico, que quiero que quede a la altura de la tuya 💚</p>
+      <div class="story-title">Lo que yo recuerdo 🏁</div>
+      <div class="story-date">la misma noche, desde el otro lado</div>
+
+      <article class="chapter reveal" id="s1">
+        <div class="ch-head"><div class="ch-icon">🚇</div><div><div class="ch-num">CAPÍTULO 1 · ANTES DE VERTE</div><div class="ch-title">El plan era otro</div></div></div>
+        <div class="ch-dates"><span class="date">04 · 09 · 2026</span></div>
+        <p>Esa tarde el plan era sencillo: ir a tomar algo a Imperio con Laura y con Emily, mi mejor amiga. Estábamos esperando a Emily y, cuando llegó a la estación de TransMilenio, fui a recogerla.</p>
+        <p>Subiendo para Imperio nos cruzamos con tu grupito. Dato que supe después: tú ya me habías visto. Yo a ti todavía no. Llevaba la noche en desventaja y ni me había enterado.</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <article class="chapter reveal" id="s2">
+        <div class="ch-head"><div class="ch-icon">👀</div><div><div class="ch-num">CAPÍTULO 2 · EL MOMENTO</div><div class="ch-title">Veeeh, qué niña tan linda</div></div></div>
+        <p>Emily les dijo que subieran con nosotros, pero no todos podían entrar. Tú sí subiste, aunque solo a avisar que se iban porque a tus amigas no las habían dejado pasar. Ahí te miré y pensé: <em>veeeh, qué niña tan linda</em>.</p>
+        <p>Lo pensé, ojo. En mi mente. Tú dices que lo dije en voz alta… y a estas alturas no voy a ganar esa discusión 😅</p>
+        <p>Ustedes se fueron para U y Emily empezó a insistir en que fuéramos también, porque Fernando, uno de tu grupo, la estaba invitando. Yo no quería ir. Accedí. Probablemente la mejor decisión que he tomado sin ganas.</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <article class="chapter reveal" id="s3">
+        <div class="ch-head"><div class="ch-icon">💧</div><div><div class="ch-num">CAPÍTULO 3 · EN U</div><div class="ch-title">El agua que nunca llegó</div></div></div>
+        <p>Llegamos y terminamos en tu mesa. Hablamos poquito, pero suficiente.</p>
+        <p>Después le pregunté a todo el mundo qué quería tomar. Tú pediste agua. Todos te miramos: <em>¿AGUA? Estamos en una discoteca</em>. Y tú, muy tranquila, que no te gustaba la cerveza.</p>
+        <p>Fui a la barra por un cubetazo y un agua. Volví con el cubetazo. Del agua, nada. Te pasé una cerveza como si nada y tú: <em>¿y mi agua?</em> Terminamos yendo los dos a la barra a comprarla. Oficialmente, nuestro primer plan juntos 😂</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <article class="chapter reveal" id="s4">
+        <div class="ch-head"><div class="ch-icon">🎶</div><div><div class="ch-num">CAPÍTULO 4 · LA PISTA</div><div class="ch-title">Más de una hora bailando</div></div></div>
+        <p>Y luego bailamos. Cambiaba la canción, cambiaba el ritmo, cambiaba la intensidad, y todo seguía fluyendo como si lleváramos tiempo haciéndolo. Se nos fue más de una hora sin darnos cuenta.</p>
+        <p>Ahí entendí que había algo distinto. No era solo que bailáramos bien: era lo fácil que se sentía estar contigo.</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <article class="chapter reveal" id="s5">
+        <div class="ch-head"><div class="ch-icon">🚗</div><div><div class="ch-num">CAPÍTULO 5 · EL REGRESO</div><div class="ch-title">En el carro con Emily</div></div></div>
+        <p>Cuando me tuve que ir me dijiste <em>pero me escribes</em>. Claro que te iba a escribir… el problema era cómo.</p>
+        <p>Salimos a comer algo con Emily y después cogimos carro de vuelta a mi casa. Yo iba todo nervioso preguntándole: ¿y cómo le escribo? Le quiero escribir, pero no sé cómo. Y ella, muy tranquila: <em>hágale, deje los nervios a un lado</em>.</p>
+        <p>Le hice caso. Como una hora y media después de despedirnos, te escribí.</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <article class="chapter reveal" id="s6">
+        <div class="ch-head"><div class="ch-icon">💻</div><div><div class="ch-num">CAPÍTULO 6 · LA LLAMADA</div><div class="ch-title">Los talleres atrasados</div></div></div>
+        <p>Contexto que quizás no sabías del todo: esa semana yo había cumplido años y me la pasé de rumba, así que tenía como cuatro talleres atrasados: uno de programación de 100 puntos y el resto de física y otras materias.</p>
+        <p>Así que cuando me propusiste hacer llamada mientras yo trabajaba, dije que sí sin pensarlo. Terminamos hablando hasta las cuatro de la mañana. Los talleres avanzaron poquito; la conversación, muchísimo.</p>
+        <p>Contigo se sintió tan natural hablar de todo y de nada. Me fui a dormir tranquilo, relajado, aun sabiendo que al otro día me tocaba trabajar.</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <article class="chapter reveal" id="s7">
+        <div class="ch-head"><div class="ch-icon">🙈</div><div><div class="ch-num">CAPÍTULO 7 · PRIMERA CITA</div><div class="ch-title">Tierra, trágame</div></div></div>
+        <div class="ch-dates"><span class="date">09 · 09 · 2026</span></div>
+        <p>El miércoles de nuestra primera cita yo iba demasiado nervioso. Tú estabas con tu mamá en el almacén de tus papás, y mi plan era entregarte el regalo antes de que alguien nos viera. Plan perfecto, en teoría.</p>
+        <p>Iba llegando, saliste, te llamé, te entregué el Stitch y la carta… y tú entraste directo a decir: <em>mira, mami, lo que me trajo Santiago</em>. Y yo afuera pensando: tierra, trágame 😂</p>
+        <p>En la carta te decía que la conexión que tenemos es muy bonita, y que había una persona disfrutando mucho el proceso de conocerte. Lo sigo sosteniendo.</p>
+        <p>De ese día en Centro Mayor me quedo con un momento: cuando nos acostamos en el pasto del primer piso. Nada extraordinario, y aun así es de lo que más recuerdo.</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <article class="chapter reveal" id="s8">
+        <div class="ch-head"><div class="ch-icon">🌙</div><div><div class="ch-num">CAPÍTULO 8 · LO DEMÁS</div><div class="ch-title">Y todo lo que vino después</div></div></div>
+        <p>Después llegó todo lo que tú ya contaste tan bonito: tu familia, mis papás, Melgar, el clásico empatado, el segundo viaje, Halloween. No lo voy a repetir; prefiero quedarme con que lo vivimos los dos.</p>
+        <p>Lo que sí te digo es esto, mi vida: desde aquella noche en que tú ya me habías visto y yo a ti todavía no, no he dejado de agradecer que Emily insistiera tanto en ir a U.</p>
+        <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
+      </article>
+
+      <div class="finale reveal">
+        <div class="big" style="color:var(--stitch)">Y apenas vamos arrancando, mamor.</div>
+        <div class="firma" style="color:var(--race)">— Santiago</div>
       </div>
+
+      <button class="teaser next-chapter" data-go="viene" data-burst="lock">
+        <span class="t-lock">🔒</span>
+        <span><b>Capítulo 9</b><small>Este todavía no lo puedo escribir… 👀</small></span>
+        <span class="t-arrow">›</span>
+      </button>
     </div>
   </div>
 </main>
@@ -950,7 +1046,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 
 <footer id="footer">
   <div class="big">Santiago &amp; Sofía</div>
-  Desde el 04 · 09 · 2026 · hecho con 💛
+  Desde el 04 · 09 · 2026 · hecho con 💛 y muchas ganas de verte
 </footer>
 
 <!-- ===== ¿ESTÁS PREPARADA? (pantallas) ===== -->
@@ -996,6 +1092,22 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     </div>
   </div>
 
+  <div class="step" data-step="5">
+    <div class="emo">😉</div>
+    <h3>Ya <em>casito</em>…</h3>
+    <p>Pero todavía no se puede. No pierdas la paciencia; mientras tanto, te dejo unas recomendaciones:</p>
+    <ul class="soon-list">
+      <li><span>👗</span>Ve alistando tu mejor outfit.</li>
+      <li><span>💅</span>Las uñas, el pelo, todo divino… por si acaso.</li>
+      <li><span>🔋</span>Mantén el celular cargado.</li>
+      <li><span>😴</span>Duerme bien, que vas a necesitar energía.</li>
+      <li><span>🤐</span>Y no le cuentes a nadie que encontraste esto.</li>
+    </ul>
+    <button class="btn dark" style="background:#fff;color:var(--ink);box-shadow:0 6px 0 #b9c0d8" id="soonBtn">Listo, me pongo juiciosa 😌</button>
+  </div>
+
+  <div class="step" data-step="6" id="realStep"><div id="realBody"></div></div>
+
   <div class="step lockout" data-step="4">
     <span class="big-lock">🔒</span>
     <h3>Sofía no disponible</h3>
@@ -1035,12 +1147,12 @@ function haptic(){
 
 /* ================= EFECTO AL TOCAR (emojis) ================= */
 const SETS = {
-  def:   ["🌼","💛","✨","💙","🌻"],
+  def:   ["✨","💫","🌙","💙","🫶","🌷"],
   race:  ["🏁","🏎️","💨","✨"],
   green: ["⚽","💚","💚","✨"],
   blue:  ["⚽","💙","💙","✨"],
   jar:   ["💛","✨","🌼","💌"],
-  love:  ["💛","💙","❤️","✨","🌼"],
+  love:  ["🫶","💙","✨","💫","🖤","🌙"],
   lock:  ["🔒","❓","👀","✨","💛"],
   call:  ["📞","💛","🐻","✨"],
   no:    ["😤","🙅","❌"],
@@ -1189,7 +1301,7 @@ tick(); setInterval(tick, 1000);
 const io = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){
     e.target.classList.add("in");
-    if(e.target.id === "finale"){ const r = e.target.getBoundingClientRect(); setTimeout(() => burst(r.left + r.width/2, r.top + r.height/2, "love", 22), 300); }
+    if(e.target.classList.contains("finale")){ const r = e.target.getBoundingClientRect(); setTimeout(() => burst(r.left + r.width/2, r.top + r.height/2, "love", 22), 300); }
     io.unobserve(e.target);
   }
 }), {threshold:.12});
@@ -1312,17 +1424,16 @@ function setVersion(v){
   $("ver-santiago").hidden = !s;
 }
 document.querySelectorAll("#seg button").forEach(b => b.addEventListener("click", () => setVersion(b.dataset.ver)));
-if($("textoSantiago").textContent.trim()){ $("typingCard").hidden = true; $("textoSantiago").classList.add("chapter"); }
 
 // chips de capítulos
-const chips = document.querySelectorAll(".chip");
-chips.forEach(c => c.addEventListener("click", () => $(c.dataset.ch).scrollIntoView({behavior:"smooth", block:"start"})));
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => $(c.dataset.ch).scrollIntoView({behavior:"smooth", block:"start"})));
 const chIo = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){
-    chips.forEach(c => { const on = c.dataset.ch === e.target.id; c.classList.toggle("on", on); if(on) centerIn(c.parentElement, c); });
+    const bar = e.target.closest("[id^=ver-]").querySelector(".chips");
+    bar.querySelectorAll(".chip").forEach(c => { const on = c.dataset.ch === e.target.id; c.classList.toggle("on", on); if(on) centerIn(bar, c); });
   }
 }), {rootMargin:"-45% 0px -50% 0px"});
-document.querySelectorAll(".chapter[id^=ch]").forEach(c => chIo.observe(c));
+document.querySelectorAll(".chapter[id]").forEach(c => chIo.observe(c));
 
 // botón "me encanta"
 document.querySelectorAll(".like").forEach(b => b.addEventListener("click", () => {
@@ -1450,6 +1561,7 @@ const tratos = [
 ];
 const trucos = [
   "Me pongo la máscara de Art y te asusto 🤡",
+  "Te robo un dulce de tu bolsa 🍭",
   "Te hago cosquillas hasta que digas 'Nacional campeón' 💚",
   "Te escondo el Stitch un ratico 💙"
 ];
@@ -1474,7 +1586,7 @@ function openTruth(){
   pin = ""; drawPin(); $("pinMsg").textContent = ""; $("noMsg").textContent = ""; noCount = 0;
   $("noBtn").style.transform = "";
   truth.classList.add("open"); document.documentElement.classList.add("lock");
-  goStep(attempts >= 5 ? 4 : 1);
+  goStep(attempts >= 3 ? 4 : 1);
 }
 function closeTruth(){ truth.classList.remove("open"); document.documentElement.classList.remove("lock"); }
 $("readyBtn").addEventListener("click", () => setTimeout(openTruth, 250));
@@ -1501,17 +1613,65 @@ document.querySelectorAll("#keypad [data-k]").forEach(k => k.addEventListener("c
   if(pin.length >= 6) return;
   haptic(); pin += k.dataset.k; drawPin();
   if(pin.length === 6){
+    const code = pin;
+    if(code === "123456"){ setTimeout(() => { pin = ""; drawPin(); $("pinMsg").textContent = ""; goStep(5); }, 250); return; }
+    $("pinDots").classList.add("checking");
+    tryUnlock(code).then(ok => {
+      $("pinDots").classList.remove("checking");
+      if(ok){ pin = ""; drawPin(); $("pinMsg").textContent = ""; attempts = 0; return; }
+      wrongPin();
+    });
+  }
+}));
+function wrongPin(){
     setTimeout(() => {
       attempts++;
       const d = $("pinDots"); d.classList.remove("shake"); d.offsetWidth; d.classList.add("shake");
       if(navigator.vibrate) navigator.vibrate([40, 40, 40]); else { haptic(); setTimeout(haptic, 120); }
       pin = ""; drawPin();
-      if(attempts >= 5){ setTimeout(() => goStep(4), 500); return; }
-      $("pinMsg").textContent = pinMsgs[attempts - 1] + (attempts >= 3 ? "" : ` · te quedan ${5 - attempts} intentos`);
-    }, 180);
-  }
-}));
+      if(attempts >= 3){ setTimeout(() => goStep(4), 500); return; }
+      $("pinMsg").textContent = attempts === 1 ? "Contraseña incorrecta · te quedan 2 intentos" : "Incorrecta otra vez 🤭 · te queda 1 intento";
+    }, 60);
+}
 $("pinDel").addEventListener("click", () => { pin = pin.slice(0, -1); drawPin(); });
+const SECRET = {s:"ceaLakbEUdSRKWK2jbD4sg==", i:"YxnF7Agp2TMuEMOE", c:"nouLCH5sGiVoDj+O20JYqoUtWBcGi4RAhEniWFIMVUlxMc9FeKjLw0kzzLRiYXo9CXxF1QFVLZ6/FQ3gAG8YMM9Q0Qvwsj7HS0WS4nKuTwysM9MvX/P1qkgovIIat3dHZD+OOCCUXUuSLY0duYFTlo9o6fB9KCgmQ5LPdDKKj/YWoOEZK2XcWujozrGb9cISpO9lrtndz9tmJvzGY5qqz5mTaOetgV23yewl6513Sd4VgpoX9aUAX4E99cUt6jZYc1ShDYkyNN4EAd7iZq3cJ3vBVp13SkWf7xriIWmHOC4uEd5D800NU9Rby+1bQ6W1WPgd/cjxtfrlbVK71ECYIHQtNs9RCv15hNv4Zy7xJ/hKAWRUrgDFauzG2VtFpzxtlmuahwOoBGEY1/h5+TnFi//BCt7VkilQovUlFtCatECfa2T4TlHVqH6vqGSdUGskJOFVJ8kS4/xTGiJXFowQRGJ7OnO2s3JgvPexc6mvP09ZIo8yYsxsgbzv6BhO/7lBGjLAu1Qn6FWNaddF6UH6sZ3nvswrg6IcCCbdi6J/Ce71LKtljrP1qmLKeiHPkzVVSNl36YpBzVQGZeGGRFLk7X4JYxAvBiEnTd8MsUR3kv04tGgkgdR8mnXyeGJd+HKN/bVbWyfw7aYxof5cWai9/FFn586Sz+q/g7Ri9pycBw5zIPXHhQtbT3GD1CBihZ3uFhanTmSSqRVtMlcZph/SzNGEfrCPhieRyu8ylaHtp0vHqsj4vMzqZ7t9ReQNjNv7QUZ8cXe2Two+c5mnvmiNezmwHFni57SugAd3/CmhaRAwpIwsjBk7lsT0UGeLM1zx4z94rG6WwvLF8eXOAzEsazhEC/0fgvvetEKKRVroGngUzfJGi7padWa2EczTPwKPcRg7B/i27d8dP0qHulgIXRh6j0UBOopYfGDN1PaGtSsz3athdDX2Kmft2QkkqwrN/7YVE7zvgmTJACvP3bEjMs5CiRD4TeXbAh+FoPTptkGDBxc8DCmfbWzZQ5rinXRac/r1VxxXmet1NOOQoukFKywtOFqgZkhKBUkk+1hejvhvSLeCgqpEU9s2gmA07QbplJsK5xiifZelNeMeZ/MR633zQX71BDju/BLAox1luO+5198YtBr0Ii4QG7kJVJ3atpVVHF8KPZEjEFwftyAc/hnBvuangNhMOQsmv95ONvc0Ksrokiltabnn+/ZApxiMW0LB3h1Y8lc3xpTBi7VxI1YYCNSZzwavlCSjU5WlISZpSNWQ/ffdbeVff8itRObB/I3FZd/3ZeMbgHyy2K+OapB/3z2Uf4Zk4rVORpCQjbJ/ueuZP7IyWYtlWm5VaKjUyaQ=", n:150000};
+// El contenido real está cifrado (AES-GCM). Sin la contraseña correcta no se puede leer, ni siquiera viendo el código.
+const unb64 = t => Uint8Array.from(atob(t), ch => ch.charCodeAt(0));
+async function tryUnlock(code){
+  try{
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(code), "PBKDF2", false, ["deriveKey"]);
+    const key = await crypto.subtle.deriveKey({name:"PBKDF2", salt:unb64(SECRET.s), iterations:SECRET.n, hash:"SHA-256"}, base, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+    const plain = await crypto.subtle.decrypt({name:"AES-GCM", iv:unb64(SECRET.i)}, key, unb64(SECRET.c));
+    const data = JSON.parse(new TextDecoder().decode(plain));
+    $("realBody").innerHTML = data.html;
+    startBigDay(new Date(data.target));
+    $("realClose").addEventListener("click", closeTruth);
+    goStep(6);
+    setTimeout(() => burst(innerWidth / 2, innerHeight / 3, "def", 24), 250);
+    return true;
+  }catch(e){ return false; }
+}
+let bigDayTimer = 0;
+function startBigDay(target){
+  clearInterval(bigDayTimer);
+  const pad = n => String(n).padStart(2, "0");
+  const draw = () => {
+    const ms = target - new Date();
+    if(ms <= 0){
+      clearInterval(bigDayTimer);
+      $("gdCount").hidden = true;
+      $("gdLabel").outerHTML = '<div class="gd-arrived">Ha llegado el gran día ✨</div>';
+      return;
+    }
+    $("gdD").textContent = Math.floor(ms / 864e5);
+    $("gdH").textContent = pad(Math.floor(ms % 864e5 / 36e5));
+    $("gdM").textContent = pad(Math.floor(ms % 36e5 / 6e4));
+    $("gdS").textContent = pad(Math.floor(ms % 6e4 / 1e3));
+  };
+  draw(); bigDayTimer = setInterval(draw, 1000);
+}
+$("soonBtn").addEventListener("click", () => { closeTruth(); setTimeout(() => burst(innerWidth / 2, innerHeight / 2, "def", 16), 200); });
+
 $("waitBtn").addEventListener("click", () => {
   closeTruth();
   setTimeout(() => burst(innerWidth / 2, innerHeight / 2, "love", 20), 200);
