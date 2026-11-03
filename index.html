@@ -101,7 +101,6 @@ button,.tap{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none
 .navbtn.menu{border-color:rgba(255,255,255,.35)}
 .navbtn.menu .bars{display:inline-grid;gap:3px}
 .navbtn.menu .bars i{display:block;width:16px;height:2px;background:#fff;border-radius:2px}
-.tab .short{display:none}
 .tab.active{background:var(--sun);color:var(--ink);box-shadow:0 3px 0 var(--sun-deep)}
 .tab .dot{width:7px;height:7px;border-radius:50%;background:var(--race);box-shadow:0 0 0 0 rgba(232,57,43,.7);animation:ping 1.6s infinite}
 @keyframes ping{to{box-shadow:0 0 0 8px rgba(232,57,43,0)}}
@@ -115,9 +114,9 @@ button,.tap{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none
 .drawer{
   position:fixed;top:0;bottom:0;left:0;width:min(86vw,360px);z-index:100;background:#fff;
   transform:translateX(-102%);transition:transform .35s cubic-bezier(.3,.8,.2,1);
-  display:flex;flex-direction:column;overscroll-behavior:contain;
+  display:flex;flex-direction:column;overscroll-behavior:contain;box-shadow:10px 0 40px rgba(0,0,0,.25);
 }
-.drawer.open{transform:none;box-shadow:10px 0 40px rgba(0,0,0,.25)}
+.drawer.open{transform:none}
 .drawer-head{background:var(--ink);color:#fff;padding:calc(20px + var(--sat)) 20px 18px calc(20px + var(--sal));display:flex;align-items:center;gap:12px}
 .drawer-head img{width:46px;height:46px;border-radius:50%;border:2px solid var(--sun)}
 .drawer-head b{font-size:20px;display:block}
@@ -359,10 +358,80 @@ h2 em{color:var(--stitch)}
 
 footer{text-align:center;padding:44px 20px calc(60px + var(--sab));color:var(--muted);font-size:14px;border-top:2px dashed var(--line)}
 footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-bottom:6px}
+.viene + footer{background:var(--ink);border-color:#2f3b66;color:#9aa0bd}
+.viene + footer .big{color:#fff}
 
 /* ================= EFECTOS AL TOCAR ================= */
 .fx{position:fixed;left:0;top:0;pointer-events:none;z-index:300;will-change:transform,opacity;line-height:1}
 .ring{position:fixed;pointer-events:none;z-index:299;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;border:3px solid var(--sun)}
+
+
+/* ================= HALLOWEEN ================= */
+.hw{position:relative;background:linear-gradient(180deg,#1a1033 0%,#2a1340 55%,#16213e 100%);color:#fff;overflow:hidden;scroll-margin-top:calc(var(--nav-h) + 9px + var(--sat))}
+.hw section{padding:60px 0 50px}
+.hw .label{color:#ff9a3c}
+.hw h2{color:#fff}
+.hw h2 em{color:#ff9a3c}
+.hw .sub{color:#d6cfe6}
+.hw-float{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hw-float span{position:absolute;font-size:26px;opacity:.5;animation:ghost 9s ease-in-out infinite}
+@keyframes ghost{0%,100%{transform:translate(0,0) rotate(-6deg)}50%{transform:translate(18px,-26px) rotate(8deg)}}
+.hw-chip{display:inline-block;background:#ff9a3c;color:#1a1033;font-weight:800;padding:7px 14px;border-radius:999px;font-size:14px;margin-bottom:6px}
+.carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:10px 9% 26px;margin:0 -4%}
+.carousel::-webkit-scrollbar{display:none}
+.carousel .polaroid{flex:0 0 78%;max-width:340px;scroll-snap-align:center;transform:rotate(-1.5deg);transition:transform .3s}
+.carousel .polaroid:nth-child(even){transform:rotate(1.5deg)}
+.carousel .polaroid img{aspect-ratio:3/4}
+.carousel .polaroid.wide img{aspect-ratio:4/3}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:-6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:#5b4b78;transition:background .3s,width .3s}
+.dots i.on{background:#ff9a3c;width:22px;border-radius:5px}
+.tot{text-align:center;margin-top:40px}
+.pumpkin{font-size:96px;background:none;border:0;padding:0;filter:drop-shadow(0 0 26px rgba(255,154,60,.55));animation:float 3s ease-in-out infinite}
+.pumpkin:active{transform:scale(.9)}
+.tot-card{max-width:440px;margin:18px auto 0;min-height:96px;background:rgba(255,255,255,.08);border:2px dashed #ff9a3c;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.tot-card b{font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:6px}
+.tot-card b.trato{background:#ff9a3c;color:#1a1033}
+.tot-card b.truco{background:#8b5cf6;color:#fff}
+.tot-card span{font-family:"Caveat",cursive;font-size:27px;line-height:1.25}
+
+/* ================= ¿ESTÁS PREPARADA? ================= */
+.ready-wrap{text-align:center}
+.ready-btn{position:relative;border:0;border-radius:999px;padding:20px 34px;font-size:20px;font-weight:800;color:var(--ink);background:linear-gradient(135deg,#ffe08a,var(--sun) 50%,#ff9a3c);box-shadow:0 8px 0 var(--sun-deep),0 0 40px rgba(255,200,61,.35);transition:transform .12s,box-shadow .12s;animation:glow 2.2s ease-in-out infinite}
+.ready-btn:active{transform:translateY(5px);box-shadow:0 3px 0 var(--sun-deep)}
+@keyframes glow{50%{box-shadow:0 8px 0 var(--sun-deep),0 0 70px rgba(255,200,61,.65)}}
+#truth{position:fixed;inset:0;z-index:180;background:radial-gradient(120% 80% at 50% 0%,#2a3b73 0%,#0b1226 70%);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(30px + var(--sat)) 22px calc(30px + var(--sab));overscroll-behavior:contain;touch-action:manipulation}
+#truth.open{display:flex;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0}}
+#truth .close-x{position:absolute;top:calc(14px + var(--sat));right:16px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:18px;font-weight:800}
+.step{display:none;flex-direction:column;align-items:center;max-width:420px;width:100%}
+.step.on{display:flex;animation:stepIn .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes stepIn{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.step .emo{font-size:76px;animation:float 3s ease-in-out infinite}
+.step h3{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(34px,10vw,48px);margin:16px 0 10px;line-height:1.1}
+.step h3 em{color:var(--sun)}
+.step p{color:#c7cbe0;line-height:1.7;margin:0 0 26px;font-size:17px}
+.step .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.ghost-btn{border:2px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:999px;padding:13px 24px;font-weight:800;font-size:16px;min-height:48px;transition:transform .2s}
+.typed{min-height:28px;font-family:"Caveat",cursive;font-size:26px;color:var(--sun);margin-top:16px}
+/* pantalla de código estilo iPhone */
+.pin-title{font-size:20px;font-weight:600;margin:6px 0 18px}
+.pin-dots{display:flex;gap:16px;justify-content:center;margin-bottom:12px}
+.pin-dots i{width:14px;height:14px;border-radius:50%;border:1.5px solid #fff;transition:background .15s}
+.pin-dots i.on{background:#fff}
+.pin-dots.shake{animation:pinShake .45s}
+@keyframes pinShake{20%{transform:translateX(-14px)}40%{transform:translateX(12px)}60%{transform:translateX(-8px)}80%{transform:translateX(5px)}}
+.pin-msg{min-height:44px;color:#ffb3ad;font-size:15px;line-height:1.4;margin-bottom:8px}
+.keypad{display:grid;grid-template-columns:repeat(3,78px);gap:16px 26px;justify-content:center}
+.key{width:78px;height:78px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:background .12s;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.key:active{background:rgba(255,255,255,.45)}
+.key b{font-size:32px;font-weight:400;line-height:1}
+.key small{font-size:10px;letter-spacing:2px;font-weight:700;margin-top:2px;opacity:.85}
+.key.blank{background:none;pointer-events:none}
+.key.txt{background:none;font-size:16px;font-weight:600}
+.lockout .big-lock{font-size:70px}
+.lockout h3{font-family:-apple-system,BlinkMacSystemFont,"Plus Jakarta Sans",sans-serif;font-weight:600;font-size:30px}
+@media(max-height:700px){.keypad{grid-template-columns:repeat(3,68px);gap:12px 22px}.key{width:68px;height:68px}.key b{font-size:28px}}
 
 /* ================= DESKTOP ================= */
 @media(min-width:861px){
@@ -382,12 +451,6 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 @media(hover:hover){
   .gallery .polaroid:hover{transform:scale(1.03)}
   .navbtn:not(.active):hover{border-color:rgba(255,255,255,.35)}
-}
-@media(max-width:460px){
-  .navrow{gap:5px;padding:0 8px}
-  .navbtn{font-size:14px;padding:8px 10px;gap:6px}
-  .navbtn.menu .mlabel,.tab .long{display:none}
-  .tab .short{display:inline}
 }
 @media(max-width:350px){.counter{grid-template-columns:repeat(2,1fr)}.viene .counter{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:400px){.viene .counter{grid-template-columns:repeat(2,1fr)}}
@@ -411,9 +474,9 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 <!-- ============ NAV (estilo Amazon) ============ -->
 <header class="topbar">
   <nav class="navrow" role="tablist">
-    <button class="navbtn menu" id="menuBtn" aria-label="Abrir menú"><span class="bars"><i></i><i></i><i></i></span><span class="mlabel">Todo</span></button>
+    <button class="navbtn menu" id="menuBtn" aria-label="Abrir menú"><span class="bars"><i></i><i></i><i></i></span>Todo</button>
     <button class="navbtn tab active" role="tab" data-tab="inicio">🏁 Inicio</button>
-    <button class="navbtn tab" role="tab" data-tab="historia">📖 <span class="long">Nuestra historia</span><span class="short">Historia</span></button>
+    <button class="navbtn tab" role="tab" data-tab="historia">📖 Nuestra historia</button>
     <button class="navbtn tab" role="tab" data-tab="viene"><span class="dot"></span>Lo que viene</button>
   </nav>
   <div id="track"><span id="car">🏎️</span><div class="finish"></div></div>
@@ -431,6 +494,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     <a href="#" data-go="inicio:llamada">La llamada</a>
     <a href="#" data-go="inicio:clasico">El clásico</a>
     <a href="#" data-go="inicio:galeria">Álbum</a>
+    <a href="#" data-go="inicio:halloween">🎃 Nuestro primer Halloween</a>
     <a href="#" data-go="inicio:frasco">Frasco de razones</a>
     <a href="#" data-go="inicio:carta">La carta</a>
     <hr>
@@ -440,6 +504,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     <hr>
     <h4>🔒 Lo que viene</h4>
     <a href="#" data-go="viene">Próximo capítulo</a>
+    <a href="#" data-go="viene:preparada">¿Estás preparada?</a>
   </div>
 </aside>
 
@@ -541,8 +606,43 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
           <p>Sol, piscina, calor y tu familia. Gracias por dejarme entrar a tu mundo y por hacerme sentir parte de él. Me traje el bronceado, muchas risas y las ganas de muchos viajes más contigo.</p>
         </div>
       </div>
+      <div class="lap reveal" data-icon="🎃">
+        <div class="lap-photo"><div class="polaroid"><img src="hw-pareja.jpg" alt="Santiago y Sofía disfrazados de Terrifier" loading="lazy" decoding="async"><div class="cap">mi payasa favorita 🤡</div></div></div>
+        <div>
+          <div class="lapno">VUELTA 07</div>
+          <h3>Nuestro primer Halloween</h3>
+          <p>Terrifier en pareja 🤡. Salimos con tus papás y tu abuela a repartir dulces, la gente nos paraba para pedirnos fotos y al final nos fuimos a comer. Nuestro primer Halloween juntos y ya es una de mis noches favoritas.</p>
+          <span class="date">Halloween 2026</span>
+          <button class="btn" style="margin-top:16px;background:#ff9a3c;box-shadow:0 6px 0 #c96a15" data-go="inicio:halloween" data-burst="halloween">🎃 Ver las fotos</button>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- ===== HALLOWEEN ===== -->
+  <div class="hw" id="halloween">
+    <div class="hw-float" id="hwFloat"></div>
+    <section>
+      <div style="text-align:center"><span class="hw-chip">🎃 Halloween 2026</span></div>
+      <h2>Nuestro primer <em>Halloween</em></h2>
+      <p class="sub">Terrifier en pareja. Salimos con tus papás y tu abuela a repartir dulces, nos pidieron fotos como si fuéramos famosos y terminamos comiendo juntos. De esas noches que se quedan guardadas.</p>
+      <div class="carousel" id="hwCarousel">
+        <div class="polaroid tap" data-cap="Terrifier en pareja 🤡🖤"><img src="hw-pareja.jpg" alt="" loading="lazy" decoding="async"><div class="cap">Terrifier en pareja 🖤</div></div>
+        <div class="polaroid tap wide" data-cap="el besito más terrorífico 😘"><img src="hw-selfie.jpg" alt="" loading="lazy" decoding="async"><div class="cap">besito terrorífico 😘</div></div>
+        <div class="polaroid tap" data-cap="posando como famosos 📸"><img src="hw-carro.jpg" alt="" loading="lazy" decoding="async"><div class="cap">los famosos de la noche 📸</div></div>
+        <div class="polaroid tap" data-cap="repartiendo dulces 🍬"><img src="hw-trio.jpg" alt="" loading="lazy" decoding="async"><div class="cap">repartiendo dulces 🍬</div></div>
+        <div class="polaroid tap" data-cap="con la familia y los perritos 🐶"><img src="hw-familia.jpg" alt="" loading="lazy" decoding="async"><div class="cap">con la familia 🐶</div></div>
+      </div>
+      <div class="dots" id="hwDots"></div>
+
+      <div class="tot">
+        <div class="label">Toca la calabaza</div>
+        <h2 style="font-size:clamp(30px,8vw,44px)">¿Truco o <em>trato</em>?</h2>
+        <button class="pumpkin" id="pumpkin" data-burst="halloween" data-n="14" aria-label="Truco o trato">🎃</button>
+        <div class="tot-card" id="totCard"><span>toca la calabaza 👆</span></div>
+      </div>
+    </section>
+  </div>
 
   <section id="llamada">
     <div class="call-wrap">
@@ -586,6 +686,8 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     <h2>Nosotros, <em>en fotos</em></h2>
     <p class="sub">Toca cualquier foto para verla en grande. Desliza para pasar a la siguiente.</p>
     <div class="gallery" id="gallery">
+      <div class="polaroid tap" data-cap="Terrifier en pareja 🤡🖤"><img src="hw-pareja.jpg" alt="" loading="lazy" decoding="async"><div class="cap">Halloween 🎃</div></div>
+      <div class="polaroid tap" data-cap="el besito más terrorífico 😘"><img src="hw-selfie.jpg" alt="" loading="lazy" decoding="async"><div class="cap">besito terrorífico 😘</div></div>
       <div class="polaroid tap" data-cap="nuestro reflejo favorito 🪞"><img src="espejo2.jpg" alt="" loading="lazy" decoding="async"><div class="cap">nuestro reflejo favorito</div></div>
       <div class="polaroid tap" data-cap="rivales en la cancha, equipo en la vida ⚽"><img src="futbol.jpg" alt="" loading="lazy" decoding="async"><div class="cap">💚 vs 💙</div></div>
       <div class="polaroid tap" data-cap="abrazos que arreglan el día 🤍"><img src="abrazo.jpg" alt="" loading="lazy" decoding="async"><div class="cap">abrazos que arreglan todo</div></div>
@@ -594,6 +696,9 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <div class="polaroid tap" data-cap="flores amarillas que no se marchitan 🌼"><img src="flores.jpg" alt="" loading="lazy" decoding="async"><div class="cap">para ti 🌼</div></div>
       <div class="polaroid tap" data-cap="no me sueltes nunca 💛"><img src="espejo1.jpg" alt="" loading="lazy" decoding="async"><div class="cap">no me sueltes</div></div>
       <div class="polaroid tap" data-cap="tus besitos en la frente 😚"><img src="paseo.jpg" alt="" loading="lazy" decoding="async"><div class="cap">mi lugar seguro</div></div>
+      <div class="polaroid tap" data-cap="posando como famosos 📸"><img src="hw-carro.jpg" alt="" loading="lazy" decoding="async"><div class="cap">los famosos 📸</div></div>
+      <div class="polaroid tap" data-cap="repartiendo dulces 🍬"><img src="hw-trio.jpg" alt="" loading="lazy" decoding="async"><div class="cap">repartiendo dulces 🍬</div></div>
+      <div class="polaroid tap" data-cap="con la familia y los perritos 🐶"><img src="hw-familia.jpg" alt="" loading="lazy" decoding="async"><div class="cap">con la familia 🐶</div></div>
       <div class="polaroid tap" data-cap="tu Stitch dormilón, desde el 09 · 09 💙"><img src="stitch.jpg" alt="" loading="lazy" decoding="async"><div class="cap">09 · 09 💙</div></div>
     </div>
   </section>
@@ -634,11 +739,11 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
   <div class="story-hero">
     <div class="label">Dos versiones, una historia</div>
     <h2>Cómo nos <em>conocimos</em></h2>
-    <p class="sub" style="margin-bottom:0">El mismo día, contado por los dos.</p>
+    <p class="sub" style="margin-bottom:0">La misma noche, contada por los dos.</p>
     <div class="seg" id="seg">
       <span class="thumb"></span>
-      <button class="on" data-ver="sofia" id="v-sofia">💙 La de Sofía</button>
-      <button data-ver="santiago" id="v-santiago">💚 La de Santiago</button>
+      <button class="on" data-ver="sofia" id="v-sofia">💙 Versión de Sofía</button>
+      <button data-ver="santiago" id="v-santiago">💚 Versión de Santiago</button>
     </div>
   </div>
 
@@ -672,7 +777,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       </article>
 
       <article class="chapter reveal" id="ch2">
-        <div class="ch-head"><div class="ch-icon">📞</div><div><div class="ch-num">CAPÍTULO 2</div><div class="ch-title">La llamada hasta las 4&nbsp;a.&nbsp;m.</div></div></div>
+        <div class="ch-head"><div class="ch-icon">📞</div><div><div class="ch-num">CAPÍTULO 2</div><div class="ch-title">La llamada hasta las 4 a. m.</div></div></div>
         <p>Y sí, me escribiste, y fue así como empezamos a hablar. Me acuerdo muy bien de que el sábado hablamos todo el día y, cuando llegó la noche, te pregunté si querías hacer una llamada mientras tú hacías trabajos. Tú me dijiste que sí y, pues, teníamos una conexión tan increíble que la llamada duró hasta las cuatro de la mañana.</p>
         <p>Nos contamos todo, hablamos de tantas cosas y, sin darnos cuenta, empezó esta historia tan linda.</p>
         <p>Desde ahí, las llamadas se fueron convirtiendo en algo muy nuestro. Es bonito terminar el día hablando contigo, contándonos nuestras cosas y compartiendo un pedacito de nuestro tiempo, incluso cuando cada uno está en su mundo.</p>
@@ -793,6 +898,13 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     </button>
   </section>
 
+  <section class="ready-wrap" id="preparada">
+    <div class="label">Solo si te atreves</div>
+    <h2>¿Estás <em>preparada</em>?</h2>
+    <p class="sub">Piénsalo bien antes de tocar 👀</p>
+    <button class="ready-btn" id="readyBtn" data-burst="lock" data-n="12">Estoy preparada 💛</button>
+  </section>
+
   <section>
     <div class="label">Cronómetro en espera</div>
     <h2>Para ser <em>algo</em>…</h2>
@@ -841,6 +953,57 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
   Desde el 04 · 09 · 2026 · hecho con 💛 y muchas ganas de verte
 </footer>
 
+<!-- ===== ¿ESTÁS PREPARADA? (pantallas) ===== -->
+<div id="truth" role="dialog" aria-modal="true">
+  <button class="close-x" id="truthClose" aria-label="Cerrar">✕</button>
+
+  <div class="step" data-step="1">
+    <div class="emo">⏳</div>
+    <h3>Falta <em>poco</em>…</h3>
+    <p>No te voy a decir cuánto. Ni cuándo. Ni cómo.</p>
+    <button class="btn" data-next="2">Continuar →</button>
+  </div>
+
+  <div class="step" data-step="2">
+    <div class="emo">🤫</div>
+    <h3>¿Quieres saber <em>toda la verdad</em>?</h3>
+    <p>Una vez que entres, no hay vuelta atrás.</p>
+    <div class="row">
+      <button class="btn" data-next="3">Sí, quiero saber</button>
+      <button class="ghost-btn" id="noBtn">Mejor no</button>
+    </div>
+    <div class="typed" id="noMsg"></div>
+  </div>
+
+  <div class="step" data-step="3">
+    <div style="font-size:30px">🔒</div>
+    <div class="pin-title">Ingresa la contraseña</div>
+    <div class="pin-dots" id="pinDots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="pin-msg" id="pinMsg"></div>
+    <div class="keypad" id="keypad">
+      <button class="key" data-k="1"><b>1</b><small>&nbsp;</small></button>
+      <button class="key" data-k="2"><b>2</b><small>ABC</small></button>
+      <button class="key" data-k="3"><b>3</b><small>DEF</small></button>
+      <button class="key" data-k="4"><b>4</b><small>GHI</small></button>
+      <button class="key" data-k="5"><b>5</b><small>JKL</small></button>
+      <button class="key" data-k="6"><b>6</b><small>MNO</small></button>
+      <button class="key" data-k="7"><b>7</b><small>PQRS</small></button>
+      <button class="key" data-k="8"><b>8</b><small>TUV</small></button>
+      <button class="key" data-k="9"><b>9</b><small>WXYZ</small></button>
+      <span class="key blank"></span>
+      <button class="key" data-k="0"><b>0</b><small>&nbsp;</small></button>
+      <button class="key txt" id="pinDel">Borrar</button>
+    </div>
+  </div>
+
+  <div class="step lockout" data-step="4">
+    <span class="big-lock">🔒</span>
+    <h3>Sofía no disponible</h3>
+    <p>Inténtalo de nuevo cuando llegue el momento 💛<br>Te prometo que vale la pena esperar.</p>
+    <button class="btn" id="waitBtn">Está bien, esperaré 🥺</button>
+  </div>
+</div>
+
 <!-- Lightbox -->
 <div id="lightbox" role="dialog" aria-modal="true">
   <button class="close" id="lbClose" aria-label="Cerrar">✕</button>
@@ -858,7 +1021,7 @@ const START = new Date(2026, 8, 4, 0, 0, 0); // 4 de septiembre 2026 (septiembre
 const $ = id => document.getElementById(id);
 const fmt = n => n.toLocaleString("es-CO");
 const rand = (a, b) => a + Math.random() * (b - a);
-// mueve una barra horizontal SIN mover la página (scrollIntoView en iPhone movía todo)
+// mueve una barra horizontal SIN mover la página (scrollIntoView en iPhone devolvía la página)
 function centerIn(bar, el){ bar.scrollTo({left: el.offsetLeft - (bar.clientWidth - el.offsetWidth) / 2, behavior:"smooth"}); }
 
 /* ================= VIBRACIÓN (iPhone iOS 18+ / Android) ================= */
@@ -881,7 +1044,8 @@ const SETS = {
   lock:  ["🔒","❓","👀","✨","💛"],
   call:  ["📞","💛","🐻","✨"],
   no:    ["😤","🙅","❌"],
-  photo: ["📸","✨","💛"]
+  photo: ["📸","✨","💛"],
+  halloween: ["🎃","🍬","🍭","👻","🤡","🖤"]
 };
 let live = 0;
 function ring(x, y){
@@ -916,7 +1080,7 @@ function burst(x, y, set = "def", n = 9){
   }
 }
 document.addEventListener("click", e => {
-  if(e.target.closest("#hap,#lightbox,.drawer,.scrim")) return;
+  if(e.target.closest("#hap,#lightbox,.drawer,.scrim,#keypad")) return;
   if(!e.isTrusted) return;
   const src = e.target.closest("[data-burst]");
   const ctl = e.target.closest("button,a,.tap");
@@ -960,6 +1124,7 @@ function showTab(name, anchor){
     t.setAttribute("aria-selected", on);
     if(on) centerIn(t.parentElement, t);
   });
+  document.querySelector(".viene + footer, footer");
   history.replaceState(null, "", "#" + name);
   if(name === "viene") startViene();
   requestAnimationFrame(() => {
@@ -1117,6 +1282,9 @@ const reasons = [
   "Porque esa noche en U no dejaste solas a tus amigas. Eso dice mucho de ti.",
   "Porque eres la protagonista de todas mis historias.",
   "Porque me haces querer ser mejor cada día.",
+  "Porque hasta disfrazada de payasa de Terrifier eres la más linda 🤡",
+  "Porque tu familia me hace sentir como en casa.",
+  "Porque contigo hasta repartir dulces se vuelve un recuerdo bonito 🍬",
   "Porque sí. Y porque eres tú."
 ];
 let pool = [], seen = 0;
@@ -1245,6 +1413,110 @@ const holdCancel = () => {
 };
 ["pointerup","pointerleave","pointercancel"].forEach(ev => hold.addEventListener(ev, holdCancel));
 hold.addEventListener("contextmenu", e => e.preventDefault());
+
+
+/* ================= HALLOWEEN ================= */
+// fantasmitas flotando
+["👻","🦇","🎃","🍬","🕸️","👻","🦇","🍭"].forEach((e, i) => {
+  const s = document.createElement("span"); s.textContent = e;
+  s.style.left = (i * 12.5 + rand(0, 8)) + "%"; s.style.top = rand(2, 90) + "%";
+  s.style.animationDelay = rand(0, 6) + "s"; s.style.fontSize = rand(20, 34) + "px";
+  $("hwFloat").appendChild(s);
+});
+// carrusel + puntitos
+const hwCar = $("hwCarousel"), hwItems = [...hwCar.children];
+hwItems.forEach(() => $("hwDots").appendChild(document.createElement("i")));
+function hwDots(){
+  const mid = hwCar.scrollLeft + hwCar.clientWidth / 2;
+  let best = 0, bd = 1e9;
+  hwItems.forEach((it, i) => { const d = Math.abs(it.offsetLeft + it.offsetWidth / 2 - mid); if(d < bd){ bd = d; best = i; } });
+  [...$("hwDots").children].forEach((d, i) => d.classList.toggle("on", i === best));
+}
+hwCar.addEventListener("scroll", hwDots, {passive:true}); hwDots();
+// tocar una foto del carrusel la abre en grande (usa el mismo visor de la galería)
+hwItems.forEach(it => it.addEventListener("click", () => {
+  const src = it.querySelector("img").getAttribute("src");
+  const i = items.findIndex(g => g.querySelector("img").getAttribute("src") === src);
+  if(i >= 0) showLb(i);
+}));
+// truco o trato
+const tratos = [
+  "Un abrazo largo apenas te vea 🤗",
+  "Te debo un helado, el que tú quieras 🍦",
+  "La próxima comida la escoges tú 🍔",
+  "Una llamada donde no cuelgo primero 📞",
+  "Muchos besos, sin máscara esta vez 😘",
+  "Una bolsa de dulces solo para ti 🍬"
+];
+const trucos = [
+  "Me pongo la máscara de Art y te asusto 🤡",
+  "Te robo un dulce de tu bolsa 🍭",
+  "Te hago cosquillas hasta que digas 'Nacional campeón' 💚",
+  "Te escondo el Stitch un ratico 💙"
+];
+let lastTot = "";
+$("pumpkin").addEventListener("click", () => {
+  const p = $("pumpkin"); p.classList.remove("shake"); p.offsetWidth; p.classList.add("shake");
+  const isTrato = Math.random() < .65;
+  const list = isTrato ? tratos : trucos;
+  let t; do { t = list[Math.floor(Math.random() * list.length)]; } while(t === lastTot && list.length > 1);
+  lastTot = t;
+  $("totCard").innerHTML = `<b class="${isTrato ? "trato" : "truco"}">${isTrato ? "Trato 🍬" : "Truco 👻"}</b><span>${t}</span>`;
+  $("totCard").animate([{transform:"scale(.9)",opacity:.4},{transform:"scale(1)",opacity:1}],{duration:300,easing:"ease-out"});
+});
+
+/* ================= ¿ESTÁS PREPARADA? ================= */
+const truth = $("truth");
+function goStep(n){
+  truth.querySelectorAll(".step").forEach(s => s.classList.toggle("on", s.dataset.step == n));
+  haptic();
+}
+function openTruth(){
+  pin = ""; drawPin(); $("pinMsg").textContent = ""; $("noMsg").textContent = ""; noCount = 0;
+  $("noBtn").style.transform = "";
+  truth.classList.add("open"); document.documentElement.classList.add("lock");
+  goStep(attempts >= 5 ? 4 : 1);
+}
+function closeTruth(){ truth.classList.remove("open"); document.documentElement.classList.remove("lock"); }
+$("readyBtn").addEventListener("click", () => setTimeout(openTruth, 250));
+$("truthClose").addEventListener("click", closeTruth);
+truth.querySelectorAll("[data-next]").forEach(b => b.addEventListener("click", () => goStep(b.dataset.next)));
+const noMsgs = ["Mentirosa, sí quieres saber 😏", "Ese botón no funciona muy bien 🙃", "Ok ok… igual te llevo 😌"];
+let noCount = 0;
+$("noBtn").addEventListener("click", () => {
+  $("noBtn").style.transform = `translate(${rand(-60, 60)}px, ${rand(-30, 30)}px)`;
+  $("noMsg").textContent = noMsgs[Math.min(noCount, noMsgs.length - 1)];
+  if(++noCount >= 3) setTimeout(() => goStep(3), 900);
+});
+// teclado de contraseña (ninguna contraseña funciona… todavía)
+let pin = "", attempts = 0;
+const pinMsgs = [
+  "Contraseña incorrecta",
+  "Incorrecta otra vez 🤭",
+  "Esa contraseña solo la sé yo 🤐",
+  "Ni con todos los intentos del mundo 😌",
+  ""
+];
+function drawPin(){ [...$("pinDots").children].forEach((d, i) => d.classList.toggle("on", i < pin.length)); }
+document.querySelectorAll("#keypad [data-k]").forEach(k => k.addEventListener("click", () => {
+  if(pin.length >= 6) return;
+  haptic(); pin += k.dataset.k; drawPin();
+  if(pin.length === 6){
+    setTimeout(() => {
+      attempts++;
+      const d = $("pinDots"); d.classList.remove("shake"); d.offsetWidth; d.classList.add("shake");
+      if(navigator.vibrate) navigator.vibrate([40, 40, 40]); else { haptic(); setTimeout(haptic, 120); }
+      pin = ""; drawPin();
+      if(attempts >= 5){ setTimeout(() => goStep(4), 500); return; }
+      $("pinMsg").textContent = pinMsgs[attempts - 1] + (attempts >= 3 ? "" : ` · te quedan ${5 - attempts} intentos`);
+    }, 180);
+  }
+}));
+$("pinDel").addEventListener("click", () => { pin = pin.slice(0, -1); drawPin(); });
+$("waitBtn").addEventListener("click", () => {
+  closeTruth();
+  setTimeout(() => burst(innerWidth / 2, innerHeight / 2, "love", 20), 200);
+});
 
 /* ================= INICIO SEGÚN EL LINK (#historia, #viene) ================= */
 const startTab = location.hash.replace("#", "");
