@@ -497,10 +497,28 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 .stat span{font-size:13px;opacity:.8;line-height:1.35;display:block;margin-top:4px}
 .mm-letter{text-align:left;background:#fff;color:#2b3150;border-radius:18px;padding:24px 20px;font-family:"Caveat",cursive;font-size:24px;line-height:1.35;box-shadow:0 20px 50px rgba(0,0,0,.35)}
 .mm-letter .sign{text-align:right;color:var(--stitch);margin-top:12px}
-.mm-song{margin-top:22px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:14px 12px 12px}
-.mm-song .t{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:800;color:#9fb4ff;margin-bottom:10px}
-.mm-song iframe{width:100%;height:152px;border:0;border-radius:12px;display:block;background:#121a33}
-.mm-song a{display:inline-block;margin-top:10px;color:#fff;font-weight:700;font-size:14px;text-decoration:none;background:#1db954;padding:9px 16px;border-radius:999px}
+.mm-song{margin-top:22px;background:linear-gradient(160deg,#1f2c52,#121a33);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:18px 16px 14px;box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.mm-song .t{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:800;color:#9fb4ff;margin-bottom:14px}
+.player{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:center;text-align:left}
+.vinyl{position:relative;width:104px;height:104px;border-radius:50%;background:repeating-radial-gradient(circle,#111 0 2px,#1d1d1d 2px 4px);box-shadow:0 8px 22px rgba(0,0,0,.5),inset 0 0 0 2px #000;animation:spin 3.2s linear infinite;animation-play-state:paused}
+.vinyl.playing{animation-play-state:running}
+.vinyl::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 40%,transparent 60%,rgba(255,255,255,.08))}
+.vinyl .lbl{position:absolute;inset:30%;border-radius:50%;background:url(espejo2.jpg) center 35%/cover;border:3px solid #9fb4ff}
+.vinyl .lbl::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#121a33}
+@keyframes spin{to{transform:rotate(360deg)}}
+.song-name{font-weight:800;font-size:18px;line-height:1.2}
+.song-art{opacity:.7;font-size:14px;margin-top:2px}
+.song-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+.play-btn{flex:0 0 52px;height:52px;border-radius:50%;border:0;background:#fff;color:#121a33;font-size:20px;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.35);transition:transform .12s}
+.play-btn:active{transform:scale(.9)}
+.play-btn svg{width:22px;height:22px}
+.song-prog{flex:1}
+.song-bar{height:5px;border-radius:9px;background:rgba(255,255,255,.18);overflow:hidden}
+.song-bar i{display:block;height:100%;width:0;background:#9fb4ff;border-radius:9px;transition:width .4s linear}
+.song-time{display:flex;justify-content:space-between;font-size:11px;opacity:.65;margin-top:5px;font-variant-numeric:tabular-nums}
+.spotify-mini{margin-top:14px;border-radius:12px;overflow:hidden;min-height:80px;background:rgba(0,0,0,.25)}
+.spotify-mini iframe{display:block;width:100%;height:80px;border:0}
+.song-note{font-size:12px;opacity:.55;margin-top:8px;text-align:center}
 .mm-strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 4px 6px;scrollbar-width:none}
 .mm-strip::-webkit-scrollbar{display:none}
 .mm-strip img{flex:0 0 46%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;border:5px solid #fff;scroll-snap-align:center}
@@ -1232,8 +1250,19 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       </div>
       <div class="mm-song">
         <div class="t">Para leerla con esta de fondo 🎶</div>
-        <iframe id="mmSong" data-src="https://open.spotify.com/embed/track/4dxEJbnuN5EXg5Ak8RJULL?utm_source=generator&theme=0" title="Traga'o de Ti · Peter Manjarrés" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <a href="https://open.spotify.com/track/4dxEJbnuN5EXg5Ak8RJULL" target="_blank" rel="noopener">Abrir en Spotify ↗</a>
+        <div class="player">
+          <div class="vinyl" id="vinyl"><div class="lbl"></div></div>
+          <div>
+            <div class="song-name">Traga'o de Ti</div>
+            <div class="song-art">Peter Manjarrés</div>
+            <div class="song-row">
+              <button class="play-btn" id="playBtn" aria-label="Reproducir"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+              <div class="song-prog"><div class="song-bar"><i id="songBar"></i></div><div class="song-time"><span id="songPos">0:00</span><span id="songDur">--:--</span></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="spotify-mini"><div id="spotifyMini"></div></div>
+        <div class="song-note" id="songNote">Suena aquí mismo, sin salir de la página</div>
       </div>
       <div class="mm-strip">
         <img src="melgar.jpg" alt="" loading="lazy"><img src="hw-pareja.jpg" alt="" loading="lazy"><img src="futbol.jpg" alt="" loading="lazy"><img src="stitch.jpg" alt="" loading="lazy"><img src="abrazo.jpg" alt="" loading="lazy">
@@ -1951,7 +1980,7 @@ function setupScratch(){
       $("scratchHint").textContent = "";
       const r = box.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, "def", 26);
       $("mmRest").classList.add("on"); countStats();
-      const sg = $("mmSong"); if(sg && !sg.src) sg.src = sg.dataset.src;
+      loadSong();
     }
   }
 }
@@ -1964,6 +1993,51 @@ function countStats(){
     requestAnimationFrame(step);
   });
 }
+
+
+/* ================= CANCIÓN (Spotify, se reproduce dentro de la página) ================= */
+const SONG_URI = "spotify:track:4dxEJbnuN5EXg5Ak8RJULL";
+let songCtl = null, songLoaded = false, songPlaying = false, songTry = 0;
+const PLAY_SVG = '<path d="M8 5v14l11-7z" fill="currentColor"/>', PAUSE_SVG = '<path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/>';
+const mmss = ms => { const t = Math.max(0, Math.round(ms / 1000)); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); };
+function setPlaying(on){
+  songPlaying = on; $("vinyl").classList.toggle("playing", on);
+  $("playIcon").innerHTML = on ? PAUSE_SVG : PLAY_SVG; $("playBtn").setAttribute("aria-label", on ? "Pausar" : "Reproducir");
+}
+function plainEmbed(){
+  if($("spotifyMini").tagName === "IFRAME") return;
+  const f = document.createElement("iframe");
+  f.src = "https://open.spotify.com/embed/track/4dxEJbnuN5EXg5Ak8RJULL?utm_source=generator&theme=0";
+  f.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"; f.title = "Traga'o de Ti";
+  $("spotifyMini").replaceWith(f); f.id = "spotifyMini";
+  $("songNote").textContent = "Dale play aquí abajo 👇";
+}
+function loadSong(){
+  if(songLoaded) return; songLoaded = true;
+  window.onSpotifyIframeApiReady = IFrameAPI => {
+    IFrameAPI.createController($("spotifyMini"), {uri: SONG_URI, width: "100%", height: 80}, ctl => {
+      songCtl = ctl;
+      ctl.addListener("playback_update", e => {
+        const d = e.data || {};
+        setPlaying(!d.isPaused && !d.isBuffering ? true : (d.isBuffering ? songPlaying : false));
+        if(d.duration){ $("songDur").textContent = mmss(d.duration); $("songBar").style.width = Math.min(100, d.position / d.duration * 100) + "%"; }
+        $("songPos").textContent = mmss(d.position || 0);
+      });
+    });
+  };
+  const sc = document.createElement("script");
+  sc.src = "https://open.spotify.com/embed/iframe-api/v1"; sc.async = true;
+  sc.onerror = plainEmbed;
+  document.head.appendChild(sc);
+  setTimeout(() => { if(!songCtl) plainEmbed(); }, 8000);   // si Spotify no responde, deja el reproductor normal
+}
+$("playBtn").addEventListener("click", () => {
+  if(!songCtl){ $("songNote").textContent = "Cargando la canción…"; return; }
+  songCtl.togglePlay();
+  // si el iPhone no deja arrancar desde este botón, se avisa que use el play de Spotify
+  const tryN = ++songTry;
+  setTimeout(() => { if(tryN === songTry && !songPlaying) $("songNote").textContent = "Si no arranca, dale al ▶ de abajo una vez 🎧"; }, 2500);
+});
 
 /* ================= INICIO SEGÚN EL LINK (#historia, #viene) ================= */
 const startTab = location.hash.replace("#", "");
