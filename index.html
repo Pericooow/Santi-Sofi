@@ -445,6 +445,62 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 .lockout h3{font-family:-apple-system,BlinkMacSystemFont,"Plus Jakarta Sans",sans-serif;font-weight:600;font-size:30px}
 @media(max-height:700px){.keypad{grid-template-columns:repeat(3,68px);gap:12px 22px}.key{width:68px;height:68px}.key b{font-size:28px}}
 
+
+/* ================= RUTA + 2 MESES ================= */
+.mm-banner{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:11px 16px;border-radius:14px;box-shadow:0 5px 0 #0b1226;animation:glow2 2.4s ease-in-out infinite}
+@keyframes glow2{50%{box-shadow:0 5px 0 #0b1226,0 0 26px rgba(63,111,216,.55)}}
+.route-box{background:#fff;border:2px solid var(--ink);border-radius:24px;box-shadow:5px 5px 0 var(--ink);padding:14px 12px 16px;max-width:620px;margin:0 auto}
+.route-map{position:relative;width:100%;aspect-ratio:360/230}
+.route-map svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.road-base{fill:none;stroke:#2b3150;stroke-width:22;stroke-linecap:round}
+.road-line{fill:none;stroke:#fff;stroke-width:2.5;stroke-dasharray:9 9;stroke-linecap:round}
+.road-done{fill:none;stroke:var(--stitch);stroke-width:6;stroke-linecap:round;opacity:.55;transition:stroke-dashoffset .9s ease}
+.flag{position:absolute;transform:translate(-50%,-115%);width:46px;height:46px;border-radius:50%;border:2.5px solid var(--ink);background:var(--paper);font-size:22px;display:grid;place-items:center;padding:0;box-shadow:0 4px 0 var(--ink);transition:transform .15s,background .3s}
+.flag:active{transform:translate(-50%,-110%) scale(.92)}
+.flag.done{background:var(--stitch-soft)}
+.flag.done::after{content:"✓";position:absolute;right:-6px;top:-6px;width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center}
+.flag.goal{background:repeating-conic-gradient(var(--ink) 0 25%,#fff 0 50%) 0 0/12px 12px;font-size:0}
+.flag.goal.ready{animation:goalPulse 1.4s infinite}
+@keyframes goalPulse{50%{box-shadow:0 4px 0 var(--ink),0 0 0 10px rgba(63,111,216,.25)}}
+.route-status{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-weight:800;font-size:14px;color:var(--muted)}
+.route-bar{height:8px;background:#eee4cf;border-radius:99px;overflow:hidden;margin-top:8px}
+.route-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--stitch),#7aa7ff);transition:width .6s}
+.stop-card{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;margin-top:16px;background:var(--cream);border-radius:16px;padding:12px;min-height:120px}
+.stop-card img{width:96px;height:120px;object-fit:cover;border-radius:10px;border:4px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.12);transform:rotate(-2deg)}
+.stop-card h3{margin:0 0 4px;font-family:"Fraunces",serif;font-weight:400;font-size:22px}
+.stop-card p{margin:0;color:#4a4f63;line-height:1.55;font-size:15.5px}
+.stop-card .date{margin-top:8px;font-size:12px;padding:4px 9px}
+.stop-card.empty{grid-template-columns:1fr;text-align:center;color:var(--muted);font-size:15px}
+.goal-card{margin-top:14px;background:var(--ink);color:#fff;border-radius:16px;padding:16px;text-align:center}
+.goal-card b{display:block;font-size:17px;margin-bottom:4px}
+.goal-card .cd{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:1px;margin:6px 0}
+.goal-card small{opacity:.7}
+/* overlay 2 meses */
+#mm{position:fixed;inset:0;z-index:185;background:radial-gradient(120% 70% at 50% 0%,#2a3b73 0%,#0b1226 75%);color:#fff;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:calc(64px + var(--sat)) 20px calc(40px + var(--sab));text-align:center}
+#mm.open{display:block;animation:fadeIn .4s}
+#mm .close-x{position:fixed;top:calc(14px + var(--sat));right:16px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:18px;font-weight:800;z-index:2}
+.mm-inner{max-width:440px;margin:0 auto}
+.mm-kick{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:#9fb4ff}
+.mm-title{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(46px,14vw,70px);line-height:1;margin:10px 0 6px}
+.mm-title em{color:#9fb4ff}
+.mm-dates{opacity:.75;font-weight:700;letter-spacing:1px}
+.scratch{position:relative;width:100%;max-width:330px;margin:26px auto 8px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4);border:6px solid #fff;background:#fff}
+.scratch img{width:100%;height:100%;object-fit:cover}
+.scratch .stamp{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.65));font-family:"Caveat",cursive;font-size:30px}
+.scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .6s}
+.scratch-hint{font-size:14px;opacity:.7;min-height:20px}
+.mm-rest{display:none}
+.mm-rest.on{display:block;animation:stepIn .7s}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px 0}
+.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 10px}
+.stat b{display:block;font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;opacity:.8;line-height:1.35;display:block;margin-top:4px}
+.mm-letter{text-align:left;background:#fff;color:#2b3150;border-radius:18px;padding:24px 20px;font-family:"Caveat",cursive;font-size:24px;line-height:1.35;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.mm-letter .sign{text-align:right;color:var(--stitch);margin-top:12px}
+.mm-strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 4px 6px;scrollbar-width:none}
+.mm-strip::-webkit-scrollbar{display:none}
+.mm-strip img{flex:0 0 46%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;border:5px solid #fff;scroll-snap-align:center}
+
 /* ================= DESKTOP ================= */
 @media(min-width:861px){
   .hero{grid-template-columns:1.1fr .9fr;text-align:left;gap:40px}
@@ -508,6 +564,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
   <div class="drawer-body">
     <h4>🏁 Inicio</h4>
     <a href="#" data-go="inicio:contador">Cronómetro</a>
+    <a href="#" data-go="inicio:ruta">🏁 La ruta (2 meses)</a>
     <a href="#" data-go="inicio:vueltas">Vuelta a vuelta</a>
     <a href="#" data-go="inicio:llamada">La llamada</a>
     <a href="#" data-go="inicio:clasico">El clásico</a>
@@ -536,6 +593,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <span class="kicker">🏁 Nuestra historia</span>
       <h1>Santiago<br><span class="amp">&amp;</span> <span class="sof">Sofía</span></h1>
       <p class="lead">Dos personas, un 4 de septiembre y una conversación que todavía no se termina. Toca la pantalla donde quieras 🌼</p>
+      <a href="#" class="mm-banner" id="mmBanner" hidden>🏁 Hoy cumplimos 2 meses · ve a la meta</a><br>
       <div class="date-chip">📅 04 · 09 · 2026</div>
     </div>
     <div class="hero-photo">
@@ -566,6 +624,26 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     </button>
   </section>
 
+  <section id="ruta">
+    <div class="label">Pista desbloqueable</div>
+    <h2>La ruta de <em>nosotros</em></h2>
+    <p class="sub">Toca cada bandera para mover el carrito. Cuando recorras las cinco, la meta guarda algo para ti.</p>
+    <div class="route-box">
+      <div class="route-map" id="routeMap">
+        <svg viewBox="0 0 360 230" aria-hidden="true">
+          <path id="routePath" class="road-base" d="M22 200 C 70 205, 70 140, 118 132 S 175 165, 205 118 S 205 40, 262 42 S 345 92, 338 168"/>
+          <path id="routeDone" class="road-done" d="M22 200 C 70 205, 70 140, 118 132 S 175 165, 205 118 S 205 40, 262 42 S 345 92, 338 168"/>
+          <path class="road-line" d="M22 200 C 70 205, 70 140, 118 132 S 175 165, 205 118 S 205 40, 262 42 S 345 92, 338 168"/>
+          <text id="routeCar" font-size="24" text-anchor="middle" dominant-baseline="central">🏎️</text>
+        </svg>
+      </div>
+      <div class="route-status"><span id="routeCount">0 de 5 banderas</span><span id="routeHint">empieza por la 🪩</span></div>
+      <div class="route-bar"><i id="routeBar"></i></div>
+      <div class="stop-card empty" id="stopCard">Toca una bandera 👆</div>
+      <div class="goal-card" id="goalCard" hidden></div>
+    </div>
+  </section>
+
   <section id="vueltas">
     <div class="label">Vuelta a vuelta</div>
     <h2>Así ha sido <em>nuestra carrera</em></h2>
@@ -575,8 +653,8 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
         <div class="lap-photo"><div class="polaroid"><img src="paseo.jpg" alt="Santiago y Sofía" loading="lazy" decoding="async"><div class="cap">el comienzo</div></div></div>
         <div>
           <div class="lapno">VUELTA 01</div>
-          <h3>La noche en U</h3>
-          <p>Entre tanta gente esa noche, coincidimos tú y yo. Sí, se me olvidó traerte el agua 😅 y aun así me diste tu Instagram. Desde ahí empecé a esperar tus mensajes y a sonreírle al celular como bobo.</p>
+          <h3>La tarde en U</h3>
+          <p>Entre tanta gente esa tarde, coincidimos tú y yo. Sí, se me olvidó traerte el agua 😅 y aun así me diste tu Instagram. Desde ahí empecé a esperar tus mensajes y a sonreírle al celular como bobo.</p>
           <span class="date">04 · 09 · 2026</span>
         </div>
       </div>
@@ -685,7 +763,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
   <section id="clasico">
     <div class="label">El clásico</div>
     <h2>Verdolaga vs. <em>Embajadora</em></h2>
-    <p class="sub">El día del estadio quedamos empatados y ganamos los dos. Marca goles a ver qué pasa ⚽</p>
+    <p class="sub">El día del partido quedamos empatados y ganamos los dos. Marca goles a ver qué pasa ⚽</p>
     <div class="board reveal">
       <div class="team v"><div class="crest">💚</div><div class="tname">Santiago</div><div class="tsub">Atlético Nacional</div></div>
       <div class="score"><span id="gS">0</span><small>–</small><span id="gF">0</span></div>
@@ -695,7 +773,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <button class="btn green" id="goalS" data-burst="green">⚽ Gol de Santiago</button>
       <button class="btn blue" id="goalF" data-burst="blue">⚽ Gol de Sofía</button>
     </div>
-    <div id="boardMsg">Empate… como en el estadio 💚💙</div>
+    <div id="boardMsg">Empate… como el día del partido 💚💙</div>
     <div class="futbol-photo reveal"><div class="polaroid"><img src="futbol.jpg" alt="Santiago y Sofía con sus camisetas" loading="lazy" decoding="async"><div class="cap">el único clásico en el que ganamos los dos</div></div></div>
   </section>
 
@@ -741,7 +819,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       </button>
       <div class="letter" id="letter">
         Sofía:<br><br>
-        No sé muy bien cómo pasó, pero desde aquella noche en U todo se siente distinto. Mejor. Más bonito.<br><br>
+        No sé muy bien cómo pasó, pero desde aquella tarde en U todo se siente distinto. Mejor. Más bonito.<br><br>
         Me encanta que me escribas, que me llames en las noches, que me hagas reír hasta con filtros de osito, y que te tomes el tiempo de pensar en detalles tan lindos como el de los Hot Wheels. Me encanta que me hayas dejado conocer a tu familia y que en cada viaje me hayas hecho sentir en casa.<br><br>
         Gracias por llegar a mi vida. Contigo nunca voy a ser espectador.
         <div class="sign">— Santiago 💛</div>
@@ -757,7 +835,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
   <div class="story-hero">
     <div class="label">Dos versiones, una historia</div>
     <h2>Cómo nos <em>conocimos</em></h2>
-    <p class="sub" style="margin-bottom:0">La misma noche, contada por los dos.</p>
+    <p class="sub" style="margin-bottom:0">La misma tarde, contada por los dos.</p>
     <div class="seg" id="seg">
       <span class="thumb"></span>
       <button class="on" data-ver="sofia" id="v-sofia">💙 La de Sofía</button>
@@ -768,7 +846,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
   <!-- ===== VERSIÓN DE SOFÍA ===== -->
   <div id="ver-sofia">
     <div class="chips" id="chips">
-      <button class="chip" data-ch="ch1">🪩 La noche en U</button>
+      <button class="chip" data-ch="ch1">🪩 La tarde en U</button>
       <button class="chip" data-ch="ch2">📞 La llamada</button>
       <button class="chip" data-ch="ch3">💙 Primera cita</button>
       <button class="chip" data-ch="ch4">🏡 Familias</button>
@@ -784,7 +862,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <div class="story-date">04 de septiembre de 2026</div>
 
       <article class="chapter reveal" id="ch1">
-        <div class="ch-head"><div class="ch-icon">🪩</div><div><div class="ch-num">CAPÍTULO 1</div><div class="ch-title">La noche en U</div></div></div>
+        <div class="ch-head"><div class="ch-icon">🪩</div><div><div class="ch-num">CAPÍTULO 1</div><div class="ch-title">La tarde en U</div></div></div>
         <div class="ch-dates"><span class="date">04 · 09 · 2026</span></div>
         <p>Nuestra historia empezó el 04/09/2026. Nos conocimos en una discoteca llamada U, por amigos en común. Fue chistosa la forma en que nos conocimos, porque íbamos a entrar a Imperio, pero dos de mis amigas no pudieron entrar. Entonces yo subí a avisar que no las habían dejado pasar.</p>
         <p>Fue ahí cuando tú me viste y dijiste <em>Ve, qué chica tan linda.</em> <span class="jaja">JAJAJA</span>. Yo bajé para esperar a que salieran las otras muchachas para irnos, y pues yo a ti no te conocía. Después fue cuando me preguntaste que por qué no subía, y yo te dije que no, porque no iba a dejar solas a mis amigas. Al final, terminamos yéndonos para U.</p>
@@ -816,7 +894,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 
       <article class="chapter reveal" id="ch4">
         <div class="ch-head"><div class="ch-icon">🏡</div><div><div class="ch-num">CAPÍTULO 4</div><div class="ch-title">Entrando en la vida del otro</div></div></div>
-        <p>Con el paso de los días, empezamos a compartir más cosas. Ya no eras solamente el niño que había conocido aquella noche en la discoteca. Eras Santiago, la persona con la que hablaba casi todas las noches, con quien compartía mis días y de quien quería seguir conociendo cada parte.</p>
+        <p>Con el paso de los días, empezamos a compartir más cosas. Ya no eras solamente el niño que había conocido aquella tarde en la discoteca. Eras Santiago, la persona con la que hablaba casi todas las noches, con quien compartía mis días y de quien quería seguir conociendo cada parte.</p>
         <p>Empezamos a salir más, a visitarnos y a compartir tiempo juntos. A veces yo iba a tu casa y otras veces tú venías a la mía. Poco a poco, nos fuimos haciendo parte de la vida del otro.</p>
         <p>También llegó el momento en que conociste a mi familia. Para mí, eso significó compartir contigo una parte importante de mi vida, porque mi familia es especial para mí y me gustaba que pudieras conocer ese lado de mi mundo.</p>
         <p>Antes de nuestro viaje a Melgar, yo también tuve la oportunidad de ir a tu casa y conocer a tus papás. Poco a poco, nuestras vidas empezaban a encontrarse más allá de las llamadas y las salidas.</p>
@@ -861,7 +939,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 
       <article class="chapter reveal" id="ch9">
         <div class="ch-head"><div class="ch-icon">✨</div><div><div class="ch-num">CAPÍTULO 9</div><div class="ch-title">Lo que sigue</div></div></div>
-        <p>A veces me pongo a pensar en cómo empezó todo y me parece increíble que, entre tantas personas y tantas casualidades, hayamos coincidido tú y yo. Quién iba a pensar que aquella noche en U terminaría convirtiéndose en el comienzo de una historia con tantas llamadas, salidas, regalos, viajes y recuerdos bonitos</p>
+        <p>A veces me pongo a pensar en cómo empezó todo y me parece increíble que, entre tantas personas y tantas casualidades, hayamos coincidido tú y yo. Quién iba a pensar que aquella tarde en U terminaría convirtiéndose en el comienzo de una historia con tantas llamadas, salidas, regalos, viajes y recuerdos bonitos</p>
         <p>Me gusta todo lo que hemos compartido y la manera en que hemos ido creando nuestra propia historia. Cada recuerdo tiene algo especial y me hace feliz saber que tenemos tantas cosas que podemos recordar juntos.</p>
         <p>No sé qué nos tenga preparado el futuro, mi niño, pero sí sé que todo lo que hemos vivido hasta hoy tiene un lugar muy especial en mi corazón. Le pido a Diosito que nos permita seguir compartiendo momentos bonitos, aprender juntos y seguir creando recuerdos que algún día podamos mirar atrás y recordar con una sonrisa.</p>
         <p>Porque nuestra historia no se trata solamente de cómo nos conocimos, sino de todo lo que hemos vivido desde entonces.</p>
@@ -896,7 +974,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     </div>
     <div class="version">
       <div class="story-title">Lo que yo recuerdo 🏁</div>
-      <div class="story-date">la misma noche, desde el otro lado</div>
+      <div class="story-date">la misma tarde, desde el otro lado</div>
 
       <article class="chapter reveal" id="s1">
         <div class="ch-head"><div class="ch-icon">🚇</div><div><div class="ch-num">CAPÍTULO 1 · ANTES DE VERTE</div><div class="ch-title">El plan era otro</div></div></div>
@@ -910,7 +988,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
         <div class="ch-head"><div class="ch-icon">👀</div><div><div class="ch-num">CAPÍTULO 2 · EL MOMENTO</div><div class="ch-title">Veeeh, qué niña tan linda</div></div></div>
         <p>Emily les dijo que subieran con nosotros, pero no todos podían entrar. Tú sí subiste, aunque solo a avisar que se iban porque a tus amigas no las habían dejado pasar. Ahí te miré y pensé: <em>veeeh, qué niña tan linda</em>.</p>
         <p>Lo pensé</p>
-        <p>Ustedes se fueron para U y Emily empezó a insistir en que fuéramos también, porque Fernando, la estaba invitando. Yo no quería ir. Accedí. Probablemente la mejor decisión que he tomado sin ganas.</p>
+        <p>Ustedes se fueron para U y Emily empezó a insistir en que fuéramos también, porque Fernando la estaba invitando. Yo no quería ir. Accedí. Probablemente la mejor decisión que he tomado sin ganas.</p>
         <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
       </article>
 
@@ -948,7 +1026,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <article class="chapter reveal" id="s7">
         <div class="ch-head"><div class="ch-icon">🙈</div><div><div class="ch-num">CAPÍTULO 7 · PRIMERA CITA</div><div class="ch-title">Tierra, trágame</div></div></div>
         <div class="ch-dates"><span class="date">09 · 09 · 2026</span></div>
-        <p>El miércoles de nuestra primera cita yo iba demasiado nervioso. Tú estabas con tu mamá en el almacén de tus papás, y mi plan era entregarte el regalo antes de que alguien nos vieran. Plan perfecto, en teoría.</p>
+        <p>El miércoles de nuestra primera cita yo iba demasiado nervioso. Tú estabas con tu mamá en el almacén de tus papás, y mi plan era entregarte el regalo antes de que alguien nos viera. Plan perfecto, en teoría.</p>
         <p>Iba llegando, saliste, te llamé, te entregué el Stitch y la carta… y tú entraste directo a decir: <em>mira, mami, lo que me trajo Santiago</em>. Y yo afuera pensando: tierra, trágame 😂</p>
         <p>En la carta te decía que la conexión que tenemos es muy bonita, y que había una persona disfrutando mucho el proceso de conocerte. Lo sigo sosteniendo.</p>
         <p>De ese día en Centro Mayor me quedo con un momento: cuando nos acostamos en el pasto del primer piso. Nada extraordinario, y aun así es de lo que más recuerdo.</p>
@@ -958,7 +1036,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <article class="chapter reveal" id="s8">
         <div class="ch-head"><div class="ch-icon">🌙</div><div><div class="ch-num">CAPÍTULO 8 · LO DEMÁS</div><div class="ch-title">Y todo lo que vino después</div></div></div>
         <p>Después llegó todo lo que tú ya contaste tan bonito: tu familia, mis papás, Melgar, el clásico empatado, el segundo viaje, Halloween. No lo voy a repetir; prefiero quedarme con que lo vivimos los dos.</p>
-        <p>Lo que sí te digo es esto, mi vida: desde aquella noche en que tú ya me habías visto y yo a ti todavía no, no he dejado de agradecer que Emily insistiera tanto en ir a U.</p>
+        <p>Lo que sí te digo es esto, mi vida: desde aquella tarde en que tú ya me habías visto y yo a ti todavía no, no he dejado de agradecer que Emily insistiera tanto en ir a U.</p>
         <div class="ch-foot"><button class="like" data-burst="love">🤍 <span>Me encanta</span></button></div>
       </article>
 
@@ -1113,6 +1191,43 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     <h3>Sofía no disponible</h3>
     <p>Inténtalo de nuevo cuando llegue el momento 💛<br>Te prometo que vale la pena esperar.</p>
     <button class="btn" id="waitBtn">Está bien, esperaré 🥺</button>
+  </div>
+</div>
+
+<!-- ===== SORPRESA 2 MESES ===== -->
+<div id="mm" role="dialog" aria-modal="true">
+  <button class="close-x" id="mmClose" aria-label="Cerrar">✕</button>
+  <div class="mm-inner">
+    <div class="mm-kick">Llegaste a la meta 🏁</div>
+    <div class="mm-title">Dos <em>meses</em></div>
+    <div class="mm-dates">04 · 09 → 04 · 11</div>
+    <div class="scratch" id="scratch">
+      <img src="espejo2.jpg" alt="Santiago y Sofía">
+      <div class="stamp">dos meses de nosotros</div>
+      <canvas id="scratchCanvas"></canvas>
+    </div>
+    <div class="scratch-hint" id="scratchHint">Raspa con el dedo 👆</div>
+
+    <div class="mm-rest" id="mmRest">
+      <div class="stats" id="mmStats">
+        <div class="stat"><b data-count="days">0</b><span>días</span></div>
+        <div class="stat"><b data-count="weeks">0</b><span>semanas</span></div>
+        <div class="stat"><b data-count="hours">0</b><span>horas</span></div>
+        <div class="stat"><b data-count="mins">0</b><span>minutos</span></div>
+      </div>
+      <div class="mm-letter">
+        Sofi:<br><br>
+        Dos meses. Dicho así parece poquito, pero vivido contigo se siente como mucho más.<br><br>
+        Estos dos meses han sido de los mejores que he tenido. No por algo en específico, sino por cómo se siente todo desde que estás: los días pasan más rápido, las noches se hacen cortas y hasta lo más normal se vuelve un buen plan.<br><br>
+        Gracias por la paciencia, por las risas, por hacerme sentir tan tranquilo y por dejarme conocerte poquito a poquito. Me gusta mucho lo que estamos construyendo.<br><br>
+        Por muchos meses más, mi cielo.
+        <div class="sign">— Santiago</div>
+      </div>
+      <div class="mm-strip">
+        <img src="melgar.jpg" alt="" loading="lazy"><img src="hw-pareja.jpg" alt="" loading="lazy"><img src="futbol.jpg" alt="" loading="lazy"><img src="stitch.jpg" alt="" loading="lazy"><img src="abrazo.jpg" alt="" loading="lazy">
+      </div>
+      <button class="btn" id="mmDone" style="margin-top:24px;background:#fff;color:var(--ink);box-shadow:0 6px 0 #b9c0d8">Por muchos meses más 🏁</button>
+    </div>
   </div>
 </div>
 
@@ -1330,7 +1445,7 @@ function board(who){
   $("gS").textContent = gs; $("gF").textContent = gf;
   const el = $(who); el.classList.remove("bump"); el.offsetWidth; el.classList.add("bump");
   let m;
-  if(gs === gf) m = "Empate… como en el estadio. Ganamos los dos 🤝";
+  if(gs === gf) m = "Empate… como el día del partido. Ganamos los dos 🤝";
   else if(gs > gf) m = gs - gf > 2 ? "Bueno ya, tampoco la humillemos 😅💚" : "Va ganando el verde… pero tú igual me robaste el corazón 💚";
   else m = gf - gs > 2 ? "Ok, ok, la embajadora manda aquí 👑💙" : "Va ganando el azul… y yo feliz perdiendo 💙";
   $("boardMsg").textContent = m;
@@ -1391,7 +1506,7 @@ const reasons = [
   "Porque tus abrazos por la espalda son mi lugar favorito.",
   "Porque contigo hasta el silencio es cómodo.",
   "Porque sonríes y todo se vuelve amarillo, como tus flores 🌼",
-  "Porque esa noche en U no dejaste solas a tus amigas. Eso dice mucho de ti.",
+  "Porque esa tarde en U no dejaste solas a tus amigas. Eso dice mucho de ti.",
   "Porque eres la protagonista de todas mis historias.",
   "Porque me haces querer ser mejor cada día.",
   "Porque hasta disfrazada de payasa de Terrifier eres la más linda 🤡",
@@ -1677,10 +1792,171 @@ $("waitBtn").addEventListener("click", () => {
   setTimeout(() => burst(innerWidth / 2, innerHeight / 2, "love", 20), 200);
 });
 
+
+/* ================= REGISTRO DE VISITAS (Google Sheets) =================
+   Pega aquí el link de tu Apps Script (termina en /exec). Vacío = no registra nada. */
+const VISITAS_URL = "";
+const NOMBRES = {inicio:"Inicio", historia:"Nuestra historia", viene:"Lo que viene"};
+let soySanti = false, lastLog = 0;
+try{
+  const q = new URLSearchParams(location.search).get("soysanti");
+  if(q === "si") localStorage.setItem("soy-santi", "1");
+  if(q === "no") localStorage.removeItem("soy-santi");
+  soySanti = localStorage.getItem("soy-santi") === "1";
+}catch(e){}
+function logVisit(evento, seccion){
+  if(!VISITAS_URL || soySanti) return;
+  lastLog = Date.now();
+  const ua = navigator.userAgent;
+  const dispositivo = /iPhone/.test(ua) ? "iPhone" : /iPad/.test(ua) ? "iPad" : /Android/.test(ua) ? "Android" : "Computador";
+  try{
+    fetch(VISITAS_URL, {method:"POST", mode:"no-cors", keepalive:true, headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body: JSON.stringify({evento, seccion: NOMBRES[seccion] || seccion || "", dispositivo})}).catch(() => {});
+  }catch(e){}
+}
+tabs.forEach(t => t.addEventListener("click", () => logVisit("Abrió pestaña", t.dataset.tab)));
+document.addEventListener("visibilitychange", () => {
+  if(document.visibilityState === "visible" && Date.now() - lastLog > 20 * 60 * 1000) logVisit("Volvió a entrar", current);
+});
+
+/* ================= RUTA + SORPRESA 2 MESES ================= */
+const MM_OPEN = new Date("2026-11-04T00:00:00-05:00");   // se abre a la medianoche del 4 de noviembre (hora Colombia)
+const MM_END  = new Date("2026-11-05T00:00:00-05:00");   // el aviso de arriba se muestra solo ese día
+const STOPS = [
+  {k:"u",       t:.07, e:"🪩", title:"La tarde en U",   text:"Tú ya me habías visto. Yo a ti todavía no.", date:"04 · 09 · 2026", img:"paseo.jpg"},
+  {k:"llamada", t:.27, e:"📞", title:"La llamada",       text:"Iba a hacer talleres. Terminamos hablando hasta las 4 a. m.", img:"llamada.jpg"},
+  {k:"cita",    t:.47, e:"🧸", title:"Primera cita",     text:"Un Stitch dormilón, una carta y unos nervios que no te imaginas.", date:"09 · 09 · 2026", img:"stitch.jpg"},
+  {k:"melgar",  t:.66, e:"🌴", title:"Melgar",           text:"Sol, piscina y tu familia haciéndome sentir en casa.", img:"melgar.jpg"},
+  {k:"hw",      t:.84, e:"🎃", title:"Halloween",        text:"Terrifier en pareja y la gente pidiéndonos fotos.", date:"Halloween 2026", img:"hw-pareja.jpg"}
+];
+const routePath = $("routePath"), routeLen = routePath.getTotalLength(), routeMap = $("routeMap");
+$("routeDone").style.strokeDasharray = routeLen; $("routeDone").style.strokeDashoffset = routeLen;
+let done = new Set();
+try{ done = new Set(JSON.parse(localStorage.getItem("ruta-banderas") || "[]")); }catch(e){}
+let carT = 0;
+function ptAt(t){ return routePath.getPointAtLength(routeLen * t); }
+function placeCar(t){
+  const p = ptAt(t), q = ptAt(Math.min(1, t + .01)), p0 = ptAt(Math.max(0, t - .01));
+  const ang = Math.atan2(q.y - p0.y, q.x - p0.x) * 180 / Math.PI;
+  $("routeCar").setAttribute("transform", `translate(${p.x} ${p.y - 4}) rotate(${ang}) scale(-1 1)`);
+}
+function driveTo(t){
+  const from = carT, start = performance.now(), dur = 700 + Math.abs(t - from) * 900;
+  const step = now => {
+    const k = Math.min(1, (now - start) / dur), e = k < .5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2) / 2;
+    carT = from + (t - from) * e; placeCar(carT);
+    if(k < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+function addFlag(t, html, cls){
+  const p = ptAt(t), b = document.createElement("button");
+  b.className = "flag " + (cls || ""); b.innerHTML = html;
+  b.style.left = (p.x / 360 * 100) + "%"; b.style.top = (p.y / 230 * 100) + "%";
+  routeMap.appendChild(b); return b;
+}
+STOPS.forEach(s => {
+  const b = addFlag(s.t, s.e); b.dataset.burst = "race"; b.setAttribute("aria-label", s.title);
+  if(done.has(s.k)) b.classList.add("done");
+  b.addEventListener("click", () => {
+    done.add(s.k); b.classList.add("done");
+    try{ localStorage.setItem("ruta-banderas", JSON.stringify([...done])); }catch(e){}
+    driveTo(s.t);
+    $("stopCard").className = "stop-card";
+    $("stopCard").innerHTML = `<img src="${s.img}" alt=""><div><h3>${s.e} ${s.title}</h3><p>${s.text}</p>${s.date ? `<span class="date">${s.date}</span>` : ""}</div>`;
+    updateRoute();
+  });
+});
+const goal = addFlag(1, "🏁", "goal"); goal.setAttribute("aria-label", "Meta"); goal.dataset.burst = "race"; goal.dataset.n = "16";
+goal.addEventListener("click", () => {
+  if(done.size < STOPS.length){ $("routeHint").textContent = "primero recorre todas las banderas"; return; }
+  driveTo(1);
+  if(new Date() >= MM_OPEN) setTimeout(openMM, 900);
+  else showGoalWait();
+});
+let waitTimer = 0;
+function showGoalWait(){
+  const gc = $("goalCard"); gc.hidden = false;
+  const draw = () => {
+    const ms = MM_OPEN - new Date();
+    if(ms <= 0){ clearInterval(waitTimer); gc.innerHTML = '<b>¡Ya se abrió! 🏁</b><small>Toca la meta otra vez</small>'; updateRoute(); return; }
+    const h = Math.floor(ms / 36e5), m = Math.floor(ms % 36e5 / 6e4), sec = Math.floor(ms % 6e4 / 1e3), pad = n => String(n).padStart(2, "0");
+    gc.innerHTML = `<b>Llegaste a la meta… pero todavía está cerrada 🔒</b><div class="cd">${pad(h)}:${pad(m)}:${pad(sec)}</div><small>Se abre a la medianoche 🌙</small>`;
+  };
+  clearInterval(waitTimer); draw(); waitTimer = setInterval(draw, 1000);
+}
+function updateRoute(){
+  const n = done.size;
+  $("routeCount").textContent = `${n} de ${STOPS.length} banderas`;
+  $("routeBar").style.width = (n / STOPS.length * 100) + "%";
+  const last = Math.max(0, ...STOPS.filter(s => done.has(s.k)).map(s => s.t));
+  $("routeDone").style.strokeDashoffset = routeLen * (1 - last);
+  const ready = n === STOPS.length;
+  goal.classList.toggle("ready", ready);
+  $("routeHint").textContent = ready ? (new Date() >= MM_OPEN ? "¡toca la meta! 🏁" : "toca la meta 🏁") : n ? "sigue con la próxima" : "empieza por la 🪩";
+}
+placeCar(0); updateRoute();
+if(new Date() >= MM_OPEN && new Date() < MM_END) $("mmBanner").hidden = false;
+$("mmBanner").addEventListener("click", e => { e.preventDefault(); $("ruta").scrollIntoView({behavior:"smooth", block:"start"}); });
+
+// overlay 2 meses
+let scratchReady = false;
+function openMM(){
+  $("mm").classList.add("open"); document.documentElement.classList.add("lock");
+  logVisit("Abrió la sorpresa de 2 meses", "inicio");
+  if(!scratchReady) setupScratch();
+}
+function closeMM(){ $("mm").classList.remove("open"); document.documentElement.classList.remove("lock"); }
+$("mmClose").addEventListener("click", closeMM);
+$("mmDone").addEventListener("click", () => { closeMM(); setTimeout(() => burst(innerWidth/2, innerHeight/2, "race", 22), 200); });
+function setupScratch(){
+  scratchReady = true;
+  const cv = $("scratchCanvas"), box = $("scratch"), dpr = Math.min(2, devicePixelRatio || 1);
+  const W = box.clientWidth, H = box.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr;
+  const c = cv.getContext("2d", {willReadFrequently:true}); c.scale(dpr, dpr);
+  const g = c.createLinearGradient(0, 0, W, H); g.addColorStop(0, "#c9d3f2"); g.addColorStop(.5, "#eef1fb"); g.addColorStop(1, "#aab8e6");
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.fillStyle = "#2b3150"; c.textAlign = "center"; c.font = "800 22px 'Plus Jakarta Sans', sans-serif";
+  c.fillText("Raspa aquí", W/2, H/2 - 8); c.font = "34px serif"; c.fillText("🏁", W/2, H/2 + 36);
+  c.globalCompositeOperation = "destination-out"; c.lineWidth = 46; c.lineCap = c.lineJoin = "round";
+  let drawing = false, last = null, moves = 0, revealed = false;
+  const pos = e => { const r = cv.getBoundingClientRect(); return {x: e.clientX - r.left, y: e.clientY - r.top}; };
+  cv.addEventListener("pointerdown", e => { drawing = true; last = pos(e); cv.setPointerCapture(e.pointerId); c.beginPath(); c.arc(last.x, last.y, 23, 0, 7); c.fill(); });
+  cv.addEventListener("pointermove", e => {
+    if(!drawing || revealed) return;
+    const p = pos(e); c.beginPath(); c.moveTo(last.x, last.y); c.lineTo(p.x, p.y); c.stroke(); last = p;
+    if(++moves % 12 === 0){ if(navigator.vibrate) navigator.vibrate(5); checkCleared(); }
+  });
+  const end = () => { drawing = false; checkCleared(); };
+  cv.addEventListener("pointerup", end); cv.addEventListener("pointercancel", end);
+  function checkCleared(){
+    if(revealed) return;
+    const d = c.getImageData(0, 0, cv.width, cv.height).data; let clear = 0, tot = 0;
+    for(let i = 3; i < d.length; i += 4 * 40){ tot++; if(d[i] === 0) clear++; }
+    if(clear / tot > .5){
+      revealed = true; cv.style.opacity = 0; setTimeout(() => cv.remove(), 700);
+      $("scratchHint").textContent = "";
+      const r = box.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, "def", 26);
+      $("mmRest").classList.add("on"); countStats();
+    }
+  }
+}
+function countStats(){
+  const ms = Math.max(0, new Date() - START);
+  const vals = {days: Math.floor(ms / 864e5), weeks: Math.floor(ms / 6048e5), hours: Math.floor(ms / 36e5), mins: Math.floor(ms / 6e4)};
+  document.querySelectorAll("#mmStats [data-count]").forEach(el => {
+    const k = el.dataset.count, to = vals[k] !== undefined ? vals[k] : +k, t0 = performance.now();
+    const step = now => { const p = Math.min(1, (now - t0) / 1400); el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - p, 3)))); if(p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+}
+
 /* ================= INICIO SEGÚN EL LINK (#historia, #viene) ================= */
 const startTab = location.hash.replace("#", "");
 if(["historia","viene"].includes(startTab)){ showTab(startTab); closeIntro(); }
 updateCar();
+logVisit("Entró", current);
 </script>
 </body>
 </html>
