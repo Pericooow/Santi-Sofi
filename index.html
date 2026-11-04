@@ -1912,7 +1912,7 @@ const goal = addFlag(1, "🏁", "goal"); goal.setAttribute("aria-label", "Meta")
 goal.addEventListener("click", () => {
   if(done.size < STOPS.length){ $("routeHint").textContent = "primero recorre todas las banderas"; return; }
   driveTo(1);
-  if(new Date() >= MM_OPEN) setTimeout(openMM, 900);
+  if(new Date() >= MM_OPEN || soySanti) setTimeout(openMM, 900);
   else showGoalWait();
 });
 let waitTimer = 0;
@@ -1937,6 +1937,7 @@ function updateRoute(){
   $("routeHint").textContent = ready ? (new Date() >= MM_OPEN ? "¡toca la meta! 🏁" : "toca la meta 🏁") : n ? "sigue con la próxima" : "empieza por la 🪩";
 }
 placeCar(0); updateRoute();
+try{ if(soySanti && new URLSearchParams(location.search).has("ver2meses")) setTimeout(() => { closeIntro(); openMM(); }, 600); }catch(e){}
 if(new Date() >= MM_OPEN && new Date() < MM_END) $("mmBanner").hidden = false;
 $("mmBanner").addEventListener("click", e => { e.preventDefault(); $("ruta").scrollIntoView({behavior:"smooth", block:"start"}); });
 
