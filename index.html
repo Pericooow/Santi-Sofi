@@ -523,6 +523,86 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 .mm-strip::-webkit-scrollbar{display:none}
 .mm-strip img{flex:0 0 46%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;border:5px solid #fff;scroll-snap-align:center}
 
+
+/* ================= LA BÚSQUEDA DEL CÓDIGO (11/11) ================= */
+.mision{position:relative}
+.slots{display:flex;justify-content:center;gap:8px;margin:6px 0 26px}
+.slot{width:46px;height:58px;border-radius:12px;border:2px dashed #4b5a8f;display:grid;place-items:center;font-size:28px;font-weight:800;color:#fff;background:rgba(255,255,255,.04);transition:all .4s}
+.slot.got{border:2px solid #9fb4ff;background:#24346a;animation:slotIn .6s}
+@keyframes slotIn{0%{transform:scale(.5) rotate(-10deg)}60%{transform:scale(1.15)}}
+.games{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:460px;margin:0 auto}
+.gcard{border:2px solid #2f3b66;background:var(--ink-2);color:#fff;border-radius:18px;padding:16px 10px;text-align:center;transition:transform .12s,border-color .3s;min-height:118px}
+.gcard:active{transform:scale(.96)}
+.gcard .ge{font-size:34px;display:block}
+.gcard b{display:block;margin-top:6px;font-size:15px}
+.gcard small{display:block;margin-top:4px;opacity:.65;font-size:12.5px}
+.gcard.locked{opacity:.45}
+.gcard.done{border-color:var(--green)}
+.gcard.next{border-color:#9fb4ff;box-shadow:0 0 0 4px rgba(159,180,255,.15)}
+.go-keypad{display:block;margin:24px auto 0}
+.today-banner{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;background:#24346a;color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:11px 16px;border-radius:14px;box-shadow:0 5px 0 #0b1226}
+/* ventana de juego */
+#gm{position:fixed;inset:0;z-index:190;background:radial-gradient(120% 70% at 50% 0%,#2a3b73 0%,#0b1226 75%);color:#fff;display:none;flex-direction:column;padding:calc(14px + var(--sat)) 16px calc(20px + var(--sab));overflow-y:auto;overscroll-behavior:contain}
+#gm.open{display:flex;animation:fadeIn .3s}
+.gm-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.gm-top b{font-size:17px}
+.gm-top button{width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:16px;font-weight:800;flex:0 0 40px}
+.gm-sub{opacity:.75;font-size:14.5px;line-height:1.5;margin:0 0 14px;text-align:center}
+.gm-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:420px;margin:0 auto}
+.gm-msg{min-height:28px;margin-top:14px;text-align:center;font-weight:700;color:#c9d6ff}
+.win{text-align:center;animation:stepIn .5s}
+.win .big{font-size:96px;font-weight:800;line-height:1;margin:10px 0 6px;color:#fff;text-shadow:0 0 30px rgba(159,180,255,.8)}
+/* semáforo */
+.f1-lights{display:flex;gap:10px;padding:14px 16px;background:#060a18;border-radius:16px;margin-bottom:18px}
+.f1-lights i{width:44px;height:44px;border-radius:50%;background:#252b45;transition:background .1s,box-shadow .1s}
+.f1-lights i.on{background:var(--race);box-shadow:0 0 20px var(--race)}
+.f1-pad{width:100%;height:190px;border-radius:22px;border:2px solid #2f3b66;background:rgba(255,255,255,.05);color:#fff;font-size:20px;font-weight:800;touch-action:manipulation}
+.f1-pad.go{background:rgba(20,160,90,.25);border-color:var(--green)}
+/* memoria */
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%}
+.mcard{aspect-ratio:3/4;border-radius:14px;border:0;background:#24346a;font-size:34px;color:transparent;transition:transform .3s,background .3s;box-shadow:inset 0 0 0 2px #3b4d8a}
+.mcard.up,.mcard.ok{background:#fff;color:inherit;transform:rotateY(180deg) scaleX(-1)}
+.mcard.ok{box-shadow:inset 0 0 0 3px var(--green)}
+/* penaltis */
+.pitch{position:relative;width:100%;aspect-ratio:4/3;border-radius:18px;background:linear-gradient(#1f7a46,#14592f);overflow:hidden}
+.goalf{position:absolute;left:8%;right:8%;top:10%;height:46%;border:5px solid #fff;border-bottom:0;border-radius:4px 4px 0 0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.15) 0 2px,transparent 2px 14px),repeating-linear-gradient(0deg,rgba(255,255,255,.15) 0 2px,transparent 2px 14px)}
+.keeper{position:absolute;left:50%;top:30%;font-size:44px;transform:translateX(-50%);transition:left .35s ease}
+.ballp{position:absolute;left:50%;bottom:10%;font-size:34px;transform:translateX(-50%);transition:all .45s ease}
+.shots{display:flex;gap:8px;margin-top:14px;width:100%}
+.shots .btn{flex:1;padding:13px 4px;font-size:14px;background:#fff;color:var(--ink);box-shadow:0 5px 0 #b9c0d8}
+.tally{margin-top:12px;font-weight:800;letter-spacing:1px}
+/* rompecabezas */
+.puz{position:relative;width:100%;aspect-ratio:1;border-radius:16px;overflow:hidden;background:#0b1226;box-shadow:0 0 0 4px #fff}
+.tile{position:absolute;width:33.333%;height:33.333%;border:1.5px solid #0b1226;background-size:300% 300%;transition:left .18s,top .18s;border-radius:6px}
+.puz-ref{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:13px;opacity:.8}
+.puz-ref img{width:54px;height:54px;border-radius:8px;object-fit:cover;border:2px solid #fff}
+/* sopa de letras */
+.ws{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;width:100%}
+.ws button{aspect-ratio:1;border:0;border-radius:8px;background:#24346a;color:#fff;font-weight:800;font-size:17px;padding:0}
+.ws button.sel{background:#9fb4ff;color:var(--ink)}
+.ws button.found{background:var(--green)}
+.ws-words{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.ws-words span{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.1);font-weight:700;font-size:14px;letter-spacing:1px}
+.ws-words span.ok{background:var(--green);text-decoration:line-through}
+/* adivinanzas */
+.quiz-q{font-family:"Fraunces",serif;font-size:24px;line-height:1.3;text-align:center;margin-bottom:18px}
+.quiz-o{display:grid;gap:10px;width:100%}
+.quiz-o button{border:2px solid #2f3b66;background:var(--ink-2);color:#fff;border-radius:14px;padding:15px;font-size:16px;font-weight:700;text-align:left}
+.quiz-o button.bad{border-color:var(--race);animation:pinShake .4s}
+.quiz-o button.good{border-color:var(--green);background:rgba(20,160,90,.25)}
+.quiz-n{opacity:.6;font-size:13px;margin-bottom:8px;text-align:center}
+/* toda la verdad (nuevo) */
+.tv-list{display:grid;gap:10px;width:100%;margin:6px 0 20px;text-align:left}
+.tv-item{display:flex;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px}
+.tv-item span{font-size:24px;flex:0 0 30px;text-align:center}
+.tv-item b{display:block;margin-bottom:4px;font-size:15.5px}
+.tv-item p{margin:0;font-size:15px;line-height:1.55;color:#d6dcf2}
+.tv-photo{width:min(260px,70vw);background:#fff;padding:9px 9px 12px;border-radius:4px;transform:rotate(-2deg);margin:4px auto 22px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.tv-photo img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.tv-photo div{font-family:"Caveat",cursive;color:var(--ink);font-size:22px;text-align:center;margin-top:6px}
+.tv-end{font-family:"Caveat",cursive;font-size:27px;line-height:1.3;color:#fff;margin:6px 0 20px}
+.novios-chip{display:inline-flex;gap:8px;align-items:center;font-weight:800;font-size:15px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:14px;margin-top:12px}
+
 /* ================= DESKTOP ================= */
 @media(min-width:861px){
   .hero{grid-template-columns:1.1fr .9fr;text-align:left;gap:40px}
@@ -602,6 +682,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
     <h4>🔒 Lo que viene</h4>
     <a href="#" data-go="viene">Próximo capítulo</a>
     <a href="#" data-go="viene:preparada">¿Estás preparada?</a>
+    <a href="#" data-go="viene:mision">🔐 La búsqueda del código</a>
   </div>
 </aside>
 
@@ -615,6 +696,7 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <span class="kicker">🏁 Nuestra historia</span>
       <h1>Santiago<br><span class="amp">&amp;</span> <span class="sof">Sofía</span></h1>
       <p class="lead">Dos personas, un 4 de septiembre y una conversación que todavía no se termina. Toca la pantalla donde quieras 🌼</p>
+      <a href="#" class="today-banner" id="todayBanner" hidden>🔓 Hoy se abre todo · ve a Lo que viene</a>
       <a href="#" class="mm-banner" id="mmBanner" hidden>🏁 Hoy cumplimos 2 meses · ve a la meta</a><br>
       <div class="date-chip">📅 04 · 09 · 2026</div>
     </div>
@@ -1080,6 +1162,15 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
      PESTAÑA 3 · LO QUE VIENE
 ====================================================== -->
 <main class="panel viene" id="tab-viene" hidden>
+  <section class="mision" id="mision" hidden>
+    <div class="label">Hoy se abre todo</div>
+    <h2>La búsqueda del <em>código</em></h2>
+    <p class="sub" id="misionSub">Seis juegos, seis números. Cuando los tengas todos, ya sabes dónde ponerlos 🔐</p>
+    <div class="slots" id="slots"><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div></div>
+    <div class="games" id="gamesGrid"></div>
+    <button class="btn go-keypad" id="goKeypad" hidden>Ir al teclado 🔐</button>
+  </section>
+
   <section style="position:relative">
     <div class="stars" id="stars"></div>
     <div class="label">Próximo capítulo</div>
@@ -1208,6 +1299,17 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
 
   <div class="step" data-step="6" id="realStep"><div id="realBody"></div></div>
 
+  <div class="step" data-step="7">
+    <div class="emo">💬</div>
+    <h3>Sofi, ¿dijiste que <em>sí</em> o que no?</h3>
+    <p>Antes de leer lo que sigue, necesito saberlo.</p>
+    <div class="row">
+      <button class="btn" id="siBtn" style="font-size:18px;padding:16px 34px">Sí 💙</button>
+      <button class="ghost-btn" id="noBtn2">No</button>
+    </div>
+    <div class="typed" id="noMsg2"></div>
+  </div>
+
   <div class="step lockout" data-step="4">
     <span class="big-lock">🔒</span>
     <h3>Sofía no disponible</h3>
@@ -1270,6 +1372,14 @@ footer .big{font-family:"Fraunces",serif;font-size:28px;color:var(--ink);margin-
       <button class="btn" id="mmDone" style="margin-top:24px;background:#fff;color:var(--ink);box-shadow:0 6px 0 #b9c0d8">Por muchos meses más 🏁</button>
     </div>
   </div>
+</div>
+
+<!-- ===== VENTANA DE LOS JUEGOS ===== -->
+<div id="gm" role="dialog" aria-modal="true">
+  <div class="gm-top"><b id="gmTitle"></b><button id="gmClose" aria-label="Cerrar">✕</button></div>
+  <p class="gm-sub" id="gmSub"></p>
+  <div class="gm-body" id="gmBody"></div>
+  <div class="gm-msg" id="gmMsg"></div>
 </div>
 
 <!-- Lightbox -->
@@ -1742,7 +1852,7 @@ function openTruth(){
   pin = ""; drawPin(); $("pinMsg").textContent = ""; $("noMsg").textContent = ""; noCount = 0;
   $("noBtn").style.transform = "";
   truth.classList.add("open"); document.documentElement.classList.add("lock");
-  goStep(attempts >= 3 ? 4 : 1);
+  goStep(UNLOCKED() ? 3 : (attempts >= 3 ? 4 : 1));
 }
 function closeTruth(){ truth.classList.remove("open"); document.documentElement.classList.remove("lock"); }
 $("readyBtn").addEventListener("click", () => setTimeout(openTruth, 250));
@@ -1770,7 +1880,7 @@ document.querySelectorAll("#keypad [data-k]").forEach(k => k.addEventListener("c
   haptic(); pin += k.dataset.k; drawPin();
   if(pin.length === 6){
     const code = pin;
-    if(code === "123456"){ setTimeout(() => { pin = ""; drawPin(); $("pinMsg").textContent = ""; goStep(5); }, 250); return; }
+    if(code === "123456"){ logVisit("Puso 123456 (Ya casito)", "viene"); setTimeout(() => { pin = ""; drawPin(); $("pinMsg").textContent = ""; goStep(5); }, 250); return; }
     $("pinDots").classList.add("checking");
     tryUnlock(code).then(ok => {
       $("pinDots").classList.remove("checking");
@@ -1785,12 +1895,13 @@ function wrongPin(){
       const d = $("pinDots"); d.classList.remove("shake"); d.offsetWidth; d.classList.add("shake");
       if(navigator.vibrate) navigator.vibrate([40, 40, 40]); else { haptic(); setTimeout(haptic, 120); }
       pin = ""; drawPin();
+      if(UNLOCKED()){ $("pinMsg").textContent = "Ese no es… revisa los números de los juegos 😉"; return; }
       if(attempts >= 3){ setTimeout(() => goStep(4), 500); return; }
       $("pinMsg").textContent = attempts === 1 ? "Contraseña incorrecta · te quedan 2 intentos" : "Incorrecta otra vez 🤭 · te queda 1 intento";
     }, 60);
 }
 $("pinDel").addEventListener("click", () => { pin = pin.slice(0, -1); drawPin(); });
-const SECRET = {s:"ceaLakbEUdSRKWK2jbD4sg==", i:"YxnF7Agp2TMuEMOE", c:"nouLCH5sGiVoDj+O20JYqoUtWBcGi4RAhEniWFIMVUlxMc9FeKjLw0kzzLRiYXo9CXxF1QFVLZ6/FQ3gAG8YMM9Q0Qvwsj7HS0WS4nKuTwysM9MvX/P1qkgovIIat3dHZD+OOCCUXUuSLY0duYFTlo9o6fB9KCgmQ5LPdDKKj/YWoOEZK2XcWujozrGb9cISpO9lrtndz9tmJvzGY5qqz5mTaOetgV23yewl6513Sd4VgpoX9aUAX4E99cUt6jZYc1ShDYkyNN4EAd7iZq3cJ3vBVp13SkWf7xriIWmHOC4uEd5D800NU9Rby+1bQ6W1WPgd/cjxtfrlbVK71ECYIHQtNs9RCv15hNv4Zy7xJ/hKAWRUrgDFauzG2VtFpzxtlmuahwOoBGEY1/h5+TnFi//BCt7VkilQovUlFtCatECfa2T4TlHVqH6vqGSdUGskJOFVJ8kS4/xTGiJXFowQRGJ7OnO2s3JgvPexc6mvP09ZIo8yYsxsgbzv6BhO/7lBGjLAu1Qn6FWNaddF6UH6sZ3nvswrg6IcCCbdi6J/Ce71LKtljrP1qmLKeiHPkzVVSNl36YpBzVQGZeGGRFLk7X4JYxAvBiEnTd8MsUR3kv04tGgkgdR8mnXyeGJd+HKN/bVbWyfw7aYxof5cWai9/FFn586Sz+q/g7Ri9pycBw5zIPXHhQtbT3GD1CBihZ3uFhanTmSSqRVtMlcZph/SzNGEfrCPhieRyu8ylaHtp0vHqsj4vMzqZ7t9ReQNjNv7QUZ8cXe2Two+c5mnvmiNezmwHFni57SugAd3/CmhaRAwpIwsjBk7lsT0UGeLM1zx4z94rG6WwvLF8eXOAzEsazhEC/0fgvvetEKKRVroGngUzfJGi7padWa2EczTPwKPcRg7B/i27d8dP0qHulgIXRh6j0UBOopYfGDN1PaGtSsz3athdDX2Kmft2QkkqwrN/7YVE7zvgmTJACvP3bEjMs5CiRD4TeXbAh+FoPTptkGDBxc8DCmfbWzZQ5rinXRac/r1VxxXmet1NOOQoukFKywtOFqgZkhKBUkk+1hejvhvSLeCgqpEU9s2gmA07QbplJsK5xiifZelNeMeZ/MR633zQX71BDju/BLAox1luO+5198YtBr0Ii4QG7kJVJ3atpVVHF8KPZEjEFwftyAc/hnBvuangNhMOQsmv95ONvc0Ksrokiltabnn+/ZApxiMW0LB3h1Y8lc3xpTBi7VxI1YYCNSZzwavlCSjU5WlISZpSNWQ/ffdbeVff8itRObB/I3FZd/3ZeMbgHyy2K+OapB/3z2Uf4Zk4rVORpCQjbJ/ueuZP7IyWYtlWm5VaKjUyaQ=", n:150000};
+const SECRET = {s:"CUlt6ZM0FcQoT+os0zKbDg==", i:"zvlZkFrwRC+XqCZz", c:"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", n:150000};
 // El contenido real está cifrado (AES-GCM). Sin la contraseña correcta no se puede leer, ni siquiera viendo el código.
 const unb64 = t => Uint8Array.from(atob(t), ch => ch.charCodeAt(0));
 async function tryUnlock(code){
@@ -1799,11 +1910,11 @@ async function tryUnlock(code){
     const key = await crypto.subtle.deriveKey({name:"PBKDF2", salt:unb64(SECRET.s), iterations:SECRET.n, hash:"SHA-256"}, base, {name:"AES-GCM", length:256}, false, ["decrypt"]);
     const plain = await crypto.subtle.decrypt({name:"AES-GCM", iv:unb64(SECRET.i)}, key, unb64(SECRET.c));
     const data = JSON.parse(new TextDecoder().decode(plain));
+    truthData = data;
     $("realBody").innerHTML = data.html;
-    startBigDay(new Date(data.target));
     $("realClose").addEventListener("click", closeTruth);
-    goStep(6);
-    setTimeout(() => burst(innerWidth / 2, innerHeight / 3, "def", 24), 250);
+    logVisit("Puso la contraseña correcta", "viene");
+    if(dijoSi()) showTruth(); else { goStep(7); }
     return true;
   }catch(e){ return false; }
 }
@@ -2039,6 +2150,279 @@ $("playBtn").addEventListener("click", () => {
   const tryN = ++songTry;
   setTimeout(() => { if(tryN === songTry && !songPlaying) $("songNote").textContent = "Si no arranca, dale al ▶ de abajo una vez 🎧"; }, 2500);
 });
+
+
+/* ================= 11/11 · LA BÚSQUEDA DEL CÓDIGO ================= */
+const UNLOCK_AT = new Date("2026-11-11T18:00:00-05:00");     // los juegos se abren a las 6:00 p. m.
+const UNLOCKED = () => new Date() >= UNLOCK_AT || soySanti;
+let truthData = null;
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} }
+};
+const dijoSi = () => store.get("dijo-si", false) === true;
+try{ if(soySanti && new URLSearchParams(location.search).has("reiniciar")){ ["juegos","dijo-si","novios-desde"].forEach(k => store.del(k)); } }catch(e){}
+const NUMS = [50,54,49,49,49,49].map(c => String.fromCharCode(c));
+let won = store.get("juegos", []);   // índices de juegos ganados
+const GAMES = [
+  {e:"🚦", t:"Semáforo", d:"Reflejos de piloto"},
+  {e:"🃏", t:"Memoria", d:"Encuentra las parejas"},
+  {e:"⚽", t:"Penaltis", d:"Mete 3 de 5"},
+  {e:"🧩", t:"Rompecabezas", d:"Arma la foto"},
+  {e:"🔤", t:"Sopa de letras", d:"Encuentra 4 palabras"},
+  {e:"🤔", t:"Adivinanzas", d:"El último candado"}
+];
+function renderHub(){
+  const g = $("gamesGrid"); g.innerHTML = "";
+  const next = won.length;
+  GAMES.forEach((gm, i) => {
+    const b = document.createElement("button");
+    const done = won.includes(i), open = i <= next;
+    b.className = "gcard" + (done ? " done" : open ? (i === next ? " next" : "") : " locked");
+    b.innerHTML = `<span class="ge">${done ? "✅" : open ? gm.e : "🔒"}</span><b>${gm.t}</b><small>${done ? "número " + NUMS[i] : open ? gm.d : "gana el anterior"}</small>`;
+    b.addEventListener("click", () => {
+      if(done){ $("misionSub").textContent = `Ya ganaste este: tu número es el ${NUMS[i]} 😉`; return; }
+      if(!open){ $("misionSub").textContent = "Primero gana el juego anterior 🔒"; return; }
+      openGame(i);
+    });
+    g.appendChild(b);
+  });
+  [...$("slots").children].forEach((sl, i) => { const got = won.includes(i); sl.textContent = got ? NUMS[i] : ""; sl.classList.toggle("got", got); });
+  const all = won.length === GAMES.length;
+  $("goKeypad").hidden = !all || dijoSi();
+  if(all && !dijoSi()) $("misionSub").textContent = "¡Tienes los seis números! Ahora ve al teclado y ponlos en orden 🔐";
+  if(dijoSi()) $("misionSub").textContent = "Lo descubriste todo 💙";
+}
+$("goKeypad").addEventListener("click", () => { openTruth(); });
+
+/* ---- ventana de juego ---- */
+let gmCleanup = null;
+function openGame(i){
+  $("gm").classList.add("open"); document.documentElement.classList.add("lock");
+  $("gmTitle").textContent = GAMES[i].e + " " + GAMES[i].t; $("gmMsg").textContent = ""; $("gmBody").innerHTML = "";
+  if(gmCleanup){ gmCleanup(); gmCleanup = null; }
+  [gameF1, gameMem, gamePen, gamePuz, gameWords, gameQuiz][i](() => winGame(i));
+}
+function closeGame(){ if(gmCleanup){ gmCleanup(); gmCleanup = null; } $("gm").classList.remove("open"); document.documentElement.classList.remove("lock"); }
+$("gmClose").addEventListener("click", closeGame);
+function winGame(i){
+  if(gmCleanup){ gmCleanup(); gmCleanup = null; }
+  if(!won.includes(i)){ won.push(i); store.set("juegos", won); logVisit(`Ganó el juego ${i + 1} (${GAMES[i].t})`, "viene"); if(won.length === GAMES.length) logVisit("Completó los 6 números", "viene"); }
+  $("gmSub").textContent = ""; $("gmMsg").textContent = "";
+  $("gmBody").innerHTML = `<div class="win"><div style="font-size:15px;opacity:.8">¡Lo lograste! Tu número es</div><div class="big">${NUMS[i]}</div><div style="opacity:.7;font-size:14px;margin-bottom:22px">va en la casilla ${i + 1} de 6</div><button class="btn" id="winOk" style="background:#fff;color:var(--ink);box-shadow:0 6px 0 #b9c0d8">${won.length === GAMES.length ? "¡Ya los tengo todos! 🔐" : "Seguir al próximo 🏁"}</button></div>`;
+  setTimeout(() => burst(innerWidth / 2, innerHeight / 2.4, "race", 24), 150);
+  $("winOk").addEventListener("click", () => { closeGame(); renderHub(); $("mision").scrollIntoView({behavior:"smooth", block:"start"}); });
+}
+const shuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+/* ---- 1. Semáforo ---- */
+function gameF1(win){
+  $("gmSub").textContent = "Toca el recuadro justo cuando se apaguen las cinco luces. Si tocas antes, es salida en falso.";
+  $("gmBody").innerHTML = `<div class="f1-lights" id="f1L"><i></i><i></i><i></i><i></i><i></i></div><button class="f1-pad" id="f1Pad">Toca aquí para empezar</button>`;
+  const L = [...$("f1L").children], pad = $("f1Pad"); let st = "idle", t0 = 0, timers = [];
+  const clear = () => { timers.forEach(clearTimeout); timers = []; };
+  gmCleanup = clear;
+  const reset = (msg) => { clear(); st = "idle"; L.forEach(l => l.classList.remove("on")); pad.classList.remove("go"); pad.textContent = "Toca aquí para intentarlo otra vez"; if(msg) $("gmMsg").textContent = msg; };
+  pad.addEventListener("pointerdown", e => {
+    e.preventDefault();
+    if(st === "idle"){
+      st = "lights"; $("gmMsg").textContent = ""; pad.textContent = "Espera…";
+      L.forEach((l, k) => timers.push(setTimeout(() => { l.classList.add("on"); haptic(); }, 500 * (k + 1))));
+      timers.push(setTimeout(() => { L.forEach(l => l.classList.remove("on")); st = "go"; t0 = performance.now(); pad.classList.add("go"); pad.textContent = "¡YA!"; }, 2500 + 400 + Math.random() * 1600));
+    } else if(st === "lights"){ reset("¡Salida en falso! 😅 Espera a que se apaguen todas"); }
+    else if(st === "go"){
+      const ms = Math.round(performance.now() - t0);
+      if(ms <= 700){ st = "done"; $("gmMsg").textContent = `${ms} ms ⚡ ¡Reflejos de piloto!`; setTimeout(win, 900); }
+      else reset(`${ms} ms… un poquito lento 🐢 Otra vez`);
+    }
+  });
+}
+/* ---- 2. Memoria ---- */
+function gameMem(win){
+  $("gmSub").textContent = "Voltea dos cartas a la vez y encuentra las 6 parejas.";
+  const E = shuffle(["🏎️","🧸","⚽","🌴","🎧","🌙","🏎️","🧸","⚽","🌴","🎧","🌙"]);
+  $("gmBody").innerHTML = `<div class="mem" id="mem"></div>`;
+  let up = [], busy = false, ok = 0, tries = 0;
+  E.forEach((em, k) => {
+    const c = document.createElement("button"); c.className = "mcard"; c.textContent = em; c.dataset.e = em;
+    c.addEventListener("click", () => {
+      if(busy || c.classList.contains("up") || c.classList.contains("ok")) return;
+      c.classList.add("up"); up.push(c); haptic();
+      if(up.length === 2){
+        tries++; busy = true;
+        const [a, b] = up;
+        if(a.dataset.e === b.dataset.e){ setTimeout(() => { a.classList.add("ok"); b.classList.add("ok"); up = []; busy = false; if(++ok === 6){ $("gmMsg").textContent = `¡Todas en ${tries} intentos!`; setTimeout(win, 800); } }, 350); }
+        else setTimeout(() => { a.classList.remove("up"); b.classList.remove("up"); up = []; busy = false; }, 800);
+      }
+    });
+    $("mem").appendChild(c);
+  });
+}
+/* ---- 3. Penaltis ---- */
+function gamePen(win){
+  $("gmSub").textContent = "Escoge a dónde patear. Mete 3 goles antes de que el arquero te ataje 3.";
+  $("gmBody").innerHTML = `<div class="pitch"><div class="goalf"></div><div class="keeper" id="kp">🧤</div><div class="ballp" id="bl">⚽</div></div>
+    <div class="shots"><button class="btn" data-d="0">⬅️ Izquierda</button><button class="btn" data-d="1">⬆️ Centro</button><button class="btn" data-d="2">➡️ Derecha</button></div><div class="tally" id="tally">Goles 0 · Atajadas 0</div>`;
+  let g = 0, sv = 0, busy = false; const X = ["22%", "50%", "78%"];
+  document.querySelectorAll(".shots .btn").forEach(b => b.addEventListener("click", () => {
+    if(busy) return; busy = true;
+    const d = +b.dataset.d, k = Math.floor(Math.random() * 3);
+    $("kp").style.left = X[k]; $("bl").style.left = X[d]; $("bl").style.bottom = "52%"; $("bl").style.fontSize = "24px";
+    setTimeout(() => {
+      if(d === k){ sv++; $("gmMsg").textContent = "¡Atajada! 🧤"; } else { g++; $("gmMsg").textContent = "¡GOOOL! ⚽"; haptic(); }
+      $("tally").textContent = `Goles ${g} · Atajadas ${sv}`;
+      setTimeout(() => {
+        $("kp").style.left = "50%"; $("bl").style.left = "50%"; $("bl").style.bottom = "10%"; $("bl").style.fontSize = "34px"; busy = false;
+        if(g >= 3){ busy = true; win(); }
+        else if(sv >= 3){ g = 0; sv = 0; $("tally").textContent = "Goles 0 · Atajadas 0"; $("gmMsg").textContent = "El arquero ganó esta vez 😅 Arrancamos de nuevo"; }
+      }, 800);
+    }, 500);
+  }));
+}
+/* ---- 4. Rompecabezas ---- */
+function gamePuz(win){
+  $("gmSub").textContent = "Toca una ficha que esté junto al espacio vacío para moverla. Arma la foto.";
+  $("gmBody").innerHTML = `<div class="puz" id="puz"></div><div class="puz-ref"><img src="nos-restaurante.jpg" alt="">así debe quedar</div>`;
+  let pos = [0,1,2,3,4,5,6,7,8];  // pos[ficha] = casilla; la ficha 8 es el hueco
+  const nb = c => [c - 3, c + 3, (c % 3) ? c - 1 : -1, (c % 3 < 2) ? c + 1 : -1].filter(x => x >= 0 && x < 9);
+  let last = -1;
+  for(let k = 0; k < 30; k++){ const h = pos[8]; const opts = nb(h).filter(x => x !== last); const c = opts[Math.floor(Math.random() * opts.length)]; const t = pos.indexOf(c); pos[t] = h; pos[8] = c; last = h; }
+  if(pos.every((p, i) => p === i)){ const h = pos[8], c = nb(h)[0], t = pos.indexOf(c); pos[t] = h; pos[8] = c; }
+  const tiles = [];
+  for(let t = 0; t < 8; t++){
+    const el = document.createElement("button"); el.className = "tile";
+    el.style.backgroundImage = "url(nos-restaurante.jpg)"; el.style.backgroundPosition = `${(t % 3) * 50}% ${Math.floor(t / 3) * 50}%`;
+    el.addEventListener("click", () => {
+      const c = pos[t], h = pos[8];
+      if(!nb(h).includes(c)) return;
+      pos[t] = h; pos[8] = c; place(); haptic();
+      if(pos.every((p, i) => p === i)){ $("gmMsg").textContent = "¡Quedó perfecta! 📸"; setTimeout(win, 900); }
+    });
+    tiles.push(el); $("puz").appendChild(el);
+  }
+  function place(){ tiles.forEach((el, t) => { el.style.left = (pos[t] % 3) * 33.333 + "%"; el.style.top = Math.floor(pos[t] / 3) * 33.333 + "%"; }); }
+  place();
+}
+/* ---- 5. Sopa de letras ---- */
+function gameWords(win){
+  $("gmSub").textContent = "Toca la primera letra y luego la última de cada palabra.";
+  const W = {CARRO:[[0,0],[0,1]], MOTOR:[[1,1],[1,1]], PISTA:[[1,7],[1,0]], META:[[7,2],[0,1]]};
+  const G = Array.from({length:8}, () => Array(8).fill(""));
+  Object.entries(W).forEach(([w, [[r, c], [dr, dc]]]) => [...w].forEach((ch, k) => G[r + dr * k][c + dc * k] = ch));
+  const AB = "ABCDEFGHIJLMNOPRSTUVZ";
+  for(let r = 0; r < 8; r++) for(let c = 0; c < 8; c++) if(!G[r][c]) G[r][c] = AB[Math.floor(Math.random() * AB.length)];
+  $("gmBody").innerHTML = `<div class="ws" id="ws"></div><div class="ws-words" id="wsw">${Object.keys(W).map(w => `<span data-w="${w}">${w}</span>`).join("")}</div>`;
+  const cells = []; let a = null; const found = new Set();
+  for(let r = 0; r < 8; r++) for(let c = 0; c < 8; c++){
+    const b = document.createElement("button"); b.textContent = G[r][c]; b.dataset.r = r; b.dataset.c = c;
+    b.addEventListener("click", () => {
+      haptic();
+      if(!a){ a = b; b.classList.add("sel"); return; }
+      const r0 = +a.dataset.r, c0 = +a.dataset.c, r1 = r, c1 = c, dr = Math.sign(r1 - r0), dc = Math.sign(c1 - c0), n = Math.max(Math.abs(r1 - r0), Math.abs(c1 - c0));
+      const straight = (r0 === r1 || c0 === c1 || Math.abs(r1 - r0) === Math.abs(c1 - c0)) && n > 0;
+      let word = "", path = [];
+      if(straight) for(let k = 0; k <= n; k++){ const cell = cells[(r0 + dr * k) * 8 + (c0 + dc * k)]; path.push(cell); word += cell.textContent; }
+      const rev = [...word].reverse().join("");
+      const hit = Object.keys(W).find(w => !found.has(w) && (w === word || w === rev));
+      a.classList.remove("sel"); a = null;
+      if(hit){ found.add(hit); path.forEach(p => p.classList.add("found")); document.querySelector(`#wsw [data-w="${hit}"]`).classList.add("ok"); $("gmMsg").textContent = `¡${hit}! ${found.size} de 4`;
+        if(found.size === 4) setTimeout(win, 800); }
+      else $("gmMsg").textContent = word.length > 1 ? "Esa no es 🤭" : "";
+    });
+    cells.push(b); $("ws").appendChild(b);
+  }
+}
+/* ---- 6. Adivinanzas ---- */
+function gameQuiz(win){
+  const Q = [
+    {q:"Tengo agujas pero no pincho. ¿Qué soy?", o:["Un cactus","Un reloj","Un erizo"], a:1},
+    {q:"¿Cuántos meses del año tienen 28 días?", o:["Solo febrero","Todos, los 12","Ninguno"], a:1},
+    {q:"Si dices mi nombre, desaparezco. ¿Qué soy?", o:["El silencio","Un secreto","La sombra"], a:0}
+  ];
+  let n = 0;
+  $("gmSub").textContent = "Tres adivinanzas. Si te equivocas, puedes volver a intentar.";
+  const show = () => {
+    const it = Q[n];
+    $("gmBody").innerHTML = `<div class="quiz-n">Adivinanza ${n + 1} de 3</div><div class="quiz-q">${it.q}</div><div class="quiz-o">${it.o.map((o, k) => `<button data-k="${k}">${o}</button>`).join("")}</div>`;
+    document.querySelectorAll(".quiz-o button").forEach(b => b.addEventListener("click", () => {
+      if(+b.dataset.k === it.a){ b.classList.add("good"); haptic(); $("gmMsg").textContent = "¡Exacto! ✨"; setTimeout(() => { n++; $("gmMsg").textContent = ""; n < Q.length ? show() : win(); }, 700); }
+      else { b.classList.remove("bad"); b.offsetWidth; b.classList.add("bad"); $("gmMsg").textContent = "Casi 🤭 intenta otra"; }
+    }));
+  };
+  show();
+}
+
+/* ---- la pregunta del sí ---- */
+function showTruth(){
+  goStep(6); logVisit("Abrió Toda la verdad", "viene");
+  if(truthData) startNovios(new Date(truthData.since));
+  setTimeout(() => burst(innerWidth / 2, innerHeight / 3, "def", 24), 250);
+}
+$("siBtn").addEventListener("click", () => {
+  store.set("dijo-si", true); if(truthData) store.set("novios-desde", truthData.since);
+  logVisit("Respondió que SÍ 💙", "viene");
+  const r = $("siBtn").getBoundingClientRect();
+  burst(r.left + r.width / 2, r.top, "love", 30); setTimeout(() => burst(innerWidth / 2, innerHeight / 2, "race", 26), 350);
+  applyNovios(); renderHub();
+  setTimeout(showTruth, 1100);
+});
+const noMsgs2 = ["Mmm… ¿segura? 🤨", "Ese botón está dañado 🙃", "Yo estaba ahí, sé lo que dijiste 😌", "Ok, te ayudo 👇"];
+let no2 = 0;
+$("noBtn2").addEventListener("click", () => {
+  $("noBtn2").style.transform = `translate(${rand(-70, 70)}px, ${rand(-50, 40)}px)`;
+  $("noMsg2").textContent = noMsgs2[Math.min(no2, noMsgs2.length - 1)];
+  if(++no2 >= 4){ $("noBtn2").hidden = true; $("siBtn").style.transform = "scale(1.15)"; }
+});
+let noviosTimer = 0;
+function startNovios(since){
+  clearInterval(noviosTimer);
+  const pad = n => String(n).padStart(2, "0");
+  const draw = () => {
+    const ms = Math.max(0, new Date() - since);
+    [["nvD", Math.floor(ms / 864e5)], ["nvH", pad(Math.floor(ms % 864e5 / 36e5))], ["nvM", pad(Math.floor(ms % 36e5 / 6e4))], ["nvS", pad(Math.floor(ms % 6e4 / 1e3))]]
+      .forEach(([id, v]) => { const el = $(id); if(el) el.textContent = v; });
+    [["nv2D", Math.floor(ms / 864e5)], ["nv2H", pad(Math.floor(ms % 864e5 / 36e5))], ["nv2M", pad(Math.floor(ms % 36e5 / 6e4))], ["nv2S", pad(Math.floor(ms % 6e4 / 1e3))]]
+      .forEach(([id, v]) => { const el = $(id); if(el) el.textContent = v; });
+  };
+  draw(); noviosTimer = setInterval(draw, 1000);
+}
+
+/* ---- la página cambia a "novios" cuando dice que sí ---- */
+function applyNovios(){
+  const since = store.get("novios-desde", null); if(!since) return;
+  const d = new Date(since);
+  const f = d.toLocaleDateString("es-CO", {day:"2-digit", month:"2-digit", year:"numeric", timeZone:"America/Bogota"}).replace(/\//g, " · ");
+  // contador ?? → contador de novios
+  const mc = $("mysteryCounter"); const sec = mc.closest("section");
+  sec.querySelector(".label").textContent = "Cronómetro oficial";
+  sec.querySelector("h2").innerHTML = "Ya somos <em>algo</em> 💙";
+  sec.querySelector(".sub").textContent = `Novios desde el ${f}. Ahora sí, este cronómetro arrancó y no para.`;
+  mc.innerHTML = '<div class="box"><span class="n" id="nv2D">0</span><span class="l">Días</span></div><div class="box"><span class="n" id="nv2H">0</span><span class="l">Horas</span></div><div class="box"><span class="n" id="nv2M">0</span><span class="l">Minutos</span></div><div class="box"><span class="n" id="nv2S">0</span><span class="l">Segundos</span></div>';
+  const fuel = sec.querySelector(".fuel"); if(fuel) fuel.hidden = true;
+  // candado y textos
+  document.querySelector(".vault .chap").innerHTML = "Capítulo <em>abierto</em>";
+  $("bigLock").textContent = "🔓"; document.querySelector(".vault .tap-hint").textContent = "toca para volver a leer toda la verdad";
+  document.querySelectorAll('.teaser[data-go="viene"]').forEach(t => { const b = t.querySelector("b"), sm = t.querySelector("small"), lk = t.querySelector(".t-lock"); if(lk) lk.textContent = "🔓"; if(sm) sm.textContent = "Ya puedes verlo todo"; if(b && b.textContent.includes("Hay algo")) b.textContent = "Ya no hay secretos"; });
+  if(!document.querySelector(".novios-chip")){ const ch = document.createElement("div"); ch.className = "novios-chip"; ch.textContent = `🏁 Novios desde el ${f}`; document.querySelector(".hero .date-chip").after(document.createElement("br"), ch); }
+  const ft = $("footer"); if(ft && !ft.dataset.nv){ ft.dataset.nv = 1; ft.insertAdjacentHTML("beforeend", `<br>Novios desde el ${f} 💙`); }
+  document.querySelector('.tab[data-tab="viene"] .dot')?.remove();
+  startNovios(d);
+}
+// el candado, ya abierto, vuelve a abrir el teclado
+$("vault").addEventListener("click", () => { if(dijoSi()) setTimeout(openTruth, 300); });
+
+/* ---- arranque ---- */
+function initMision(){
+  if(!UNLOCKED()) return;
+  $("mision").hidden = false; renderHub();
+  if(!dijoSi()){ $("todayBanner").hidden = false; }
+}
+$("todayBanner").addEventListener("click", e => { e.preventDefault(); showTab("viene", "mision"); });
+initMision();
+if(dijoSi()) applyNovios();
+// si está abierta a las 6:00 p. m. justas, se activa sola
+if(!UNLOCKED()){ const ms = UNLOCK_AT - new Date(); if(ms < 864e5) setTimeout(initMision, ms + 500); }
 
 /* ================= INICIO SEGÚN EL LINK (#historia, #viene) ================= */
 const startTab = location.hash.replace("#", "");
